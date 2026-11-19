@@ -1,5 +1,16 @@
 # English journal and project copy publication
 
+## Current complete technical edition and source repository
+
+- Canonical forum article is now [Fund Edition — how the data, AI teams and paper-trading engine work](https://community.harnessrouter.ai/events/the-big-hack-game/forum/t/e9871243d19443fda4c55a80583a7839), published as one main post with 13 numbered implementation sections, Build log category and The Big Hack Game label.
+- The earlier topic's follow-up reply was removed. The author interface exposes reply removal, while the earlier main topic has no edit or delete control and remains accessible. No deletion of that main topic is claimed.
+- The public journal uses the same 13-section technical narrative. Deployment `35ae2b5e-bd44-4f4f-ad7e-85c43df24741` succeeded. Anonymous readback verified sources, role routing, the decision contract, the watch worker and phone-width layout.
+- [GitHub source](https://github.com/tianhaohao-001/fund-edition) is public and linked in the original competition submission. The publish checkout is `release/github-source/`, separate from the parent shared-workspace Git repository.
+- The source snapshot contains 406 tracked files, including web, backend, data fixtures, tests, hosting adapters and mobile source. Common private-key and API-token scans returned zero findings. A fresh clone from GitHub passed all 211 main application tests.
+- The current demo link remains visible on the public project card alongside the GitHub link. Final screenshots and checks are under `release/review-web/copy-and-journal-20261119/`.
+
+## Earlier publication history
+
 Published on November 19, 2026, Pacific time.
 
 - Project description source is `../competition-ops/description.txt`. The portal has a 1,200-character limit. Anonymous readback verified both entrances and both catalogue sections.
