@@ -1,0 +1,74 @@
+body[data-workspace="home"], body[data-guided-workspace] {
+  background:#faf9f6;color:#272524;color-scheme:light;
+}
+body[data-workspace="home"] :is(.site-header,.site-footer,.skip-link),
+body[data-guided-workspace] :is(.site-header,.site-footer,.skip-link) {display:none}
+body[data-workspace="home"] .site-main,body[data-guided-workspace] .site-main {width:100%;max-width:none;padding:0;margin:0;min-height:100svh}
+body[data-workspace="home"] .site-notices:empty {display:none}
+.guided-entry,.ge-workspace {
+  --ge-ink:#272524;--ge-sub:#645f5a;--ge-line:#dcd7cf;
+  font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei UI",sans-serif;color:var(--ge-ink);
+}
+.guided-entry *, .ge-workspace * {box-sizing:border-box}
+.guided-entry :is(button,a),.ge-workspace :is(a,button) {font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.guided-entry :focus-visible,.ge-workspace :focus-visible {outline:3px solid #2178b0;outline-offset:4px}
+.guided-entry .ge-rail {max-width:1400px;height:83px;margin:auto;padding:0 clamp(23px,5vw,76px);display:flex;align-items:center;justify-content:space-between;gap:18px}
+.ge-wordmark {display:flex;align-items:center;gap:11px;font:600 21px/1 Georgia,"Times New Roman",serif;letter-spacing:-.8px}
+.ge-wordmark i {width:22px;height:22px;display:flex;align-items:center;gap:2px;transform:skewY(-11deg)}
+.ge-wordmark b {width:5px;height:13px;border-radius:5px;background:currentColor}
+.ge-wordmark b:nth-child(2){height:20px}.ge-wordmark b:last-child{height:16px}
+.ge-environment,.ge-foot,.ge-work-kicker {color:var(--ge-sub);font-size:12px;letter-spacing:.035em}
+.ge-environment {text-align:right}
+.guided-entry .ge-home {position:relative;isolation:isolate;display:grid;justify-items:center;align-content:center;text-align:center;padding:30px 24px 90px;min-height:calc(100svh - 83px)}
+.ge-home::before {content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(ellipse 28% 32% at 50% 40%,#e9dcd5 0%,#f3ece6 46%,transparent 100%)}
+.ge-portrait {width:158px;height:176px;background:#8c7f76 url("/assets/maya-at-table.jpg") 88% 0%/auto 136% no-repeat;border-radius:80px 80px 32px 32px;box-shadow:0 2px 2px #31231b24,inset 0 0 1px 1px #4c393622}
+.ge-id {margin:21px 0 0;display:flex;align-items:center;justify-content:center;gap:8px;color:#61544f;font-size:14px}
+.ge-id strong {color:var(--ge-ink);font-size:17px}.ge-id i {height:3px;width:3px;border-radius:50%;background:currentColor}
+.guided-entry h1,.guided-entry h2,.ge-workspace h1 {font-family:inherit;color:var(--ge-ink);font-weight:550;letter-spacing:-.055em;text-wrap:balance;line-height:1.18}
+.guided-entry .ge-home h1 {font-size:clamp(34px,4.25vw,63px);margin:22px 0 13px}
+.ge-home .ge-intro {text-wrap:balance;max-width:510px;color:var(--ge-sub);font-size:clamp(15px,1.4vw,19px);line-height:1.7;margin:0}
+.ge-home .ge-primary {margin-top:31px}
+.ge-primary,.ge-link,.ge-choice {min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;border:0}
+.ge-primary,.ge-voice .voice-button {background:#302c2b;color:white;border-radius:100px;font-weight:600;font-size:15px;line-height:1.3;padding:15px 24px}
+.ge-primary:hover,.ge-voice .voice-button:hover {background:#4a403f;color:white}.ge-primary:disabled {opacity:.5;cursor:default}
+.ge-link {color:var(--ge-sub);font-size:14px;padding:8px 12px;border-radius:12px;background:transparent}
+.ge-link:hover {color:var(--ge-ink);background:#dedad13d}
+.ge-home .ge-browse {margin-top:5px}.ge-settings {position:absolute;right:clamp(13px,4.8vw,72px);bottom:20px}
+.ge-foot {position:absolute;left:clamp(24px,5vw,76px);bottom:31px}
+#entry-sheet {color:var(--ge-ink);background:#fffefa;border:1px solid #e3dfd8;border-radius:29px;width:min(486px,calc(100vw - 30px));max-height:calc(100svh - 38px);overflow:auto;margin:auto auto clamp(24px,8vh,87px);padding:0;box-shadow:0 22px 90px #34292332}
+#entry-sheet::backdrop {background:#27242045;backdrop-filter:blur(4px)}
+body:has(#entry-sheet[open],#account-sheet[open]) .ge-home button {visibility:hidden}
+.ge-sheet-inner {padding:15px 28px 27px}
+.ge-back {padding-left:0}.guided-entry .ge-sheet-inner h2 {font-size:clamp(24px,2.8vw,34px);line-height:1.27;margin:7px 0 10px}
+.ge-description {color:var(--ge-sub);line-height:1.65;white-space:pre-line;margin:8px 0 16px;overflow-wrap:anywhere}
+.ge-choice {text-align:left;width:100%;justify-content:space-between;min-height:62px;border-top:1px solid var(--ge-line);padding:12px 2px;color:var(--ge-ink);font-size:17px}
+.ge-choice:hover {color:#683d43}.ge-actions,.ge-collections {display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:24px}
+.ge-composer textarea {width:100%;display:block;resize:vertical;color:var(--ge-ink);background:#fffefa;border:1px solid var(--ge-line);border-radius:12px;padding:12px;margin:12px 0 16px;font:inherit}
+.ge-voice {display:flex;align-items:flex-start;gap:6px;flex-wrap:wrap}
+.ge-voice .voice-control {position:static;display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:100%}
+.ge-voice .voice-button {position:static;display:inline-flex;align-items:center;gap:7px;border:0;min-height:44px;width:auto;height:auto;aspect-ratio:auto;box-shadow:none}
+.ge-voice .voice-status,.ge-voice .voice-privacy {position:static;display:block;color:var(--ge-sub);background:none;width:auto;opacity:1;font:inherit;font-size:13px;line-height:1.45}
+.ge-voice .voice-status:empty {display:none}.ge-voice .voice-button[data-listening]{background:#663d43}
+.ge-workspace {width:min(100% - 48px,1040px);margin:auto;padding:clamp(24px,5vh,58px) 0}
+.ge-work-grid {border-top:1px solid var(--ge-line);margin-top:20px;padding-top:clamp(24px,5vh,54px);display:grid;grid-template-columns:minmax(260px,.66fr) 1fr;gap:clamp(25px,6vw,86px);align-items:center;min-height:58svh}
+.ge-work-art {min-height:320px;aspect-ratio:1/1.1;border-radius:140px 140px 22px 22px;background:#b39e91 url("/assets/studio-interior.jpg") center/cover}
+.ge-funds .ge-work-art {background:#d7d8ca url("/assets/funds-sculpture.jpg") center/cover}
+.ge-work-kicker {color:#663d43}.ge-funds .ge-work-kicker {color:#2c525f}
+.ge-workspace h1 {font-size:clamp(32px,4.2vw,60px);margin:12px 0 18px}
+.ge-workspace article p {color:var(--ge-sub);line-height:1.7;font-size:clamp(16px,1.4vw,20px);max-width:46ch}
+.ge-studio article>.ge-primary {background:#663d43;margin-top:16px}.ge-funds .ge-primary {background:#2c525f}
+@media(max-width:700px) {
+  .guided-entry .ge-rail {height:62px;padding:0 22px}.guided-entry .ge-home {min-height:calc(100svh - 62px);padding:12px 22px 72px}
+  .ge-home::before {background:radial-gradient(ellipse 61% 33% at 50% 39%,#e9ddd6 0%,#f4ede7 50%,transparent 100%)}
+  .ge-portrait {width:132px;height:146px;border-radius:68px 68px 27px 27px}.guided-entry .ge-home h1 {margin-top:19px}
+  .ge-home .ge-intro {max-width:285px}.ge-home .ge-primary {margin-top:24px}
+  .ge-foot {left:22px;bottom:24px;font-size:11px}.ge-settings {right:13px;bottom:12px}
+  #entry-sheet {width:100%;max-width:none;border-radius:25px 25px 0 0;border-bottom:0;max-height:90svh;margin:auto auto 0}
+  .ge-sheet-inner {padding:11px 23px max(25px,env(safe-area-inset-bottom))}
+  .ge-work-grid {grid-template-columns:1fr;gap:22px}.ge-work-art {height:180px;min-height:0;aspect-ratio:auto;border-radius:24px}
+}
+@media(max-height:630px) and (min-width:701px) {
+  .guided-entry .ge-home {padding-bottom:58px;min-height:calc(100svh - 65px)}.ge-portrait {width:104px;height:116px}
+  .guided-entry .ge-home h1 {margin-top:8px}.ge-id {margin-top:9px}.ge-home .ge-primary {margin-top:16px}.guided-entry .ge-rail {height:65px}
+}
+

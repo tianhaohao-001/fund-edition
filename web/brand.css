@@ -1,0 +1,201 @@
+/* The studio and gallery use one ink, one interaction colour, and natural photography.
+   The public review links can still show either historical identity without these rules. */
+html[data-identity="signature"] {
+  --brand-accent: #254bd1;
+  --brand-deep: #182e82;
+  --brand-tint: #ebf0ff;
+  --brand-ink: #172239;
+  --brand-muted: #536078;
+  --brand-line: #d7dee9;
+  --brand-paper: #fafbfd;
+  --brand-lens: radial-gradient(ellipse at var(--glint,32%) -110%,#8facff 4%,transparent 70%),linear-gradient(125deg,var(--brand-accent) 10%,#2043ba 87%);
+  --brand-glass: linear-gradient(145deg,#fffffff2,#edf1fbe0);
+  --room-ink:var(--brand-ink); --room-primary:var(--brand-accent); --room-active:var(--brand-deep);
+  --room-secondary:var(--brand-muted); --room-line:var(--brand-line); --room-focus:var(--brand-accent);
+  --paper:var(--brand-paper); --ink:var(--brand-ink); --muted:var(--brand-muted);
+  --line:var(--brand-line); --accent:var(--brand-accent);
+  --broker-green:var(--brand-deep); --broker-acid:var(--brand-tint); --broker-line:var(--brand-line);
+  accent-color:var(--brand-accent); color-scheme:light;
+}
+html[data-identity="signature"] body {
+  --ge-ink:var(--brand-ink); --ge-sub:var(--brand-muted); --ge-line:var(--brand-line);
+  --fr-ink:var(--brand-ink); --fr-secondary:var(--brand-muted); --fr-line:var(--brand-line);
+  --fr-studio:var(--brand-deep); --fr-funds:var(--brand-accent);
+  --market-ink:var(--brand-ink); --market-accent:var(--brand-accent); --market-muted:var(--brand-muted); --market-rule:var(--brand-line);
+  color:var(--brand-ink);
+}
+html[data-identity="signature"] :is(.brand .brand-sign,.wordmark .seat-mark,.ge-wordmark .seat-mark) {
+  -webkit-mask:url('/assets/signature-mark.svg') center/contain no-repeat!important;
+  mask:url('/assets/signature-mark.svg') center/contain no-repeat!important;
+  background:var(--brand-accent)!important;
+}
+html[data-identity="signature"] :is(.operator-brand,header>a.brand,[data-broker-brand]) {
+  display:inline-flex; align-items:center; gap:.42em; color:var(--brand-ink);
+}
+html[data-identity="signature"] :is(.operator-brand,header>a.brand,[data-broker-brand])::before {
+  content:""; display:inline-block; width:1.28em; height:1.28em; background:url('/assets/signature-mark.svg') center/contain no-repeat;
+}
+html[data-identity="signature"] :is(.mast .brand,.ge-rail .ge-wordmark,.site-header .wordmark) {color:var(--brand-ink)}
+html[data-identity="signature"] :is(.ed-brand-kind,.guided-entry .ge-rail .ge-environment) {color:var(--brand-muted)}
+html[data-identity="signature"] .ed-lobby[data-look] {--fe-ink:var(--brand-ink); --fe-muted:var(--brand-muted); --fe-edge:var(--brand-line); background:var(--brand-paper)}
+html[data-identity="signature"] .ed-lobby :is(.ed-title,.ed-invitation) {color:var(--brand-ink)}
+html[data-identity="signature"] .ed-lobby :is(.ed-person,.ed-description) {color:var(--brand-muted)}
+html[data-identity="signature"] .ed-lobby .ed-atmosphere {background:radial-gradient(ellipse at 24% 71%,#eef1f8,transparent 49%),radial-gradient(ellipse at 80% 41%,#edf1fa,transparent 46%),linear-gradient(#fff,var(--brand-paper) 58%,#fff)}
+html[data-identity="signature"] .ed-funds .ed-stage::before {background:radial-gradient(ellipse,#ced8ee 10%,#e1e7f155 44%,transparent 70%)}
+html[data-identity="signature"] .ed-lobby .ed-studio .ed-action,
+html[data-identity="signature"] body :is(.reception-interview,.receiver-local-studio) .receiver-lens,
+html[data-identity="signature"] body :is(.reception-interview .composer-bar .glass,.receiver-local-studio .transcript-actions button[type=submit]) {
+  background:var(--brand-lens); color:white;
+  box-shadow:inset 0 1px 1px #ffffff86,0 4px 12px #182e8225;
+}
+html[data-identity="signature"] .ed-lobby .ed-funds .ed-action,
+html[data-identity="signature"] .fg-detail-talk {background:var(--brand-glass);color:var(--brand-deep);border-color:var(--brand-line);box-shadow:inset 0 1px 1px #fff,0 3px 10px #17223910}
+html[data-identity="signature"] .ed-review-controls .ed-review-option[aria-current] {color:var(--brand-deep)}
+html[data-identity="signature"] body:has(.reception-interview) #main:before,
+html[data-identity="signature"] body:has(.receiver-local-studio) #main-content:before {background-image:radial-gradient(ellipse at 60% 50%,#d1dcff9c,transparent 53%),url('/assets/edition-studio.webp')}
+html[data-identity="signature"] body :is(.reception-interview,.receiver-local-studio) :is(.receiver-identity,.guide-person-copy,.guide-answers>span,.reply-hints>p,.receiver-note,.ed-availability,.receiver-options summary,.receiver-history summary,.transcript-caption,.pending-words,.thinking,.receiver-audio-feedback,.explain) {color:var(--brand-muted)}
+html[data-identity="signature"] body :is(.reception-interview,.receiver-local-studio) :is(.question,.guide-message.receiver-opening p,.guide-message.receiver-opening h2,.receiver-question,.reply-long) {color:var(--brand-ink)}
+html[data-identity="signature"] body :is(.receiver-local-studio .guide-answers button,.reception-interview .reply-hints .hint,.reception-interview .composer-bar .plain,.receiver-local-studio .guide-composer .voice-start [data-action="toggle-typing"]) {background:var(--brand-glass);border-color:var(--brand-line);color:var(--brand-deep)}
+html[data-identity="signature"] body :is(.receiver-local-studio .guide-answers button:hover,.reception-interview .reply-hints .hint:hover) {background:var(--brand-tint)}
+html[data-identity="signature"] body :is(.reception-interview,.receiver-local-studio) :is(.receiver-audio,.receiver-cancel,.receiver-options button,.sample-record>[data-command],.device-progress) {color:var(--brand-deep);accent-color:var(--brand-accent)}
+html[data-identity="signature"] body .receiver .receiver-audio:is(:hover,[aria-pressed=true]) {background:var(--brand-tint);color:var(--brand-accent)}
+html[data-identity="signature"] body :is(.reception-interview,.receiver-local-studio) .receiver-lens[aria-pressed=true] {background:var(--brand-deep)}
+html[data-identity="signature"] body :is(.reception-interview,.receiver-local-studio) :is(textarea,.write-field) {color:var(--brand-ink);border-color:var(--brand-line)}
+html[data-identity="signature"] .receiver .receiver-photo::before {border-color:#254bd129;border-top-color:white}
+html[data-identity="signature"] .receiver[data-status=listening] .receiver-photo::before {animation-name:signature-listen}
+@keyframes signature-listen {from{transform:scale(.98);box-shadow:0 0 0 0 #254bd155}to{transform:scale(1.055);box-shadow:0 0 0 9px #254bd100}}
+html[data-identity="signature"] :is(.sx,.sx-detail,.sx-detail-head,.sx-guide,.fg-directory) {
+  --sx-ink:var(--brand-ink); --sx-muted:var(--brand-muted); --sx-line:var(--brand-line); --sx-accent:var(--brand-accent);
+  --fg-accent:var(--brand-accent); --fg-paper:var(--brand-paper); --fg-stroke:var(--brand-line); --fg-muted:var(--brand-muted);
+}
+html[data-identity="signature"] .sx-cool {--sx-glow:#becbed;background:linear-gradient(140deg,#fafbff,#ebeffa)}
+html[data-identity="signature"] :is(.sx-fund-object,.sx-detail-disc) {color:var(--brand-deep);background:radial-gradient(ellipse at 38% 22%,white 0%,#f6f8ff 41%,#d6dff5 77%,#f9faff 100%)}
+html[data-identity="signature"] :is(.sx .sx-eyebrow,.sx-detail-head .sx-eyebrow,.sx-guide .sx-eyebrow,.sx-market-note,.sx-detail .chart figcaption,.sx-person-copy p,.sx-fund-copy p) {color:var(--brand-muted)}
+html[data-identity="signature"] :is(.fg-seat-mark,.fg-filters button:not([aria-pressed=true]):hover) {background:var(--brand-tint);color:var(--brand-deep)}
+html[data-identity="signature"] .fg-weight-track {fill:var(--brand-tint)}
+html[data-identity="signature"] .fg-weight-bar {fill:var(--brand-accent)}
+html[data-identity="signature"] :is(.fg-quote-head strong,.fg-inspect output) {color:var(--brand-ink)}
+html[data-identity="signature"] :is(.sx .sx-go,.sx-detail .sx-go,.sx-detail .sx-person-submit) {background:var(--brand-lens);color:white}
+html[data-identity="signature"] :is(.sx-fund-object,.sx-detail-disc) b {background:var(--brand-glass);color:var(--brand-deep)}
+html[data-identity="signature"] .sx-disc {background:conic-gradient(from -90deg,var(--brand-accent) 0% 64%,white 64% 65%,#a4b6eb 65% 99%,white 99%)}
+html[data-identity="signature"] :is(.sx-fund-contents,.sx-detail-disc):not([data-fund=wellington]) .sx-disc {background:repeating-conic-gradient(from -90deg,#8297d8 0deg 3deg,transparent 4deg 13deg)}
+html[data-identity="signature"] .sx-detail-head:not(.sx-human) .sx-subject {background:linear-gradient(115deg,var(--brand-tint),white)}
+html[data-identity="signature"] .sx-detail-head:not(.sx-human) .sx-subject::before {background:radial-gradient(ellipse,#bfcae9a0,transparent 70%)}
+html[data-identity="signature"] :is(.sx-rack,.sx-turn .sx-q,.sx-library>summary,.sx-sources>summary,.sx-sources code) {color:var(--brand-muted)}
+html[data-identity="signature"] :is(.sx-sources a,.sx .sx-skip,.sx .sx-chip,.sx-guide .sx-chip,.sx-guide .sx-reply) {color:var(--brand-deep)}
+html[data-identity="signature"] :is(.sx .sx-skip,.sx .sx-fund-tile,.sx-guide .sx-reply,.sx-live textarea) {background:var(--brand-paper);border-color:var(--brand-line)}
+html[data-identity="signature"] .sx-live .sx-message {border-color:var(--brand-accent)}
+html[data-identity="signature"] .sx-choice[aria-pressed=true] .sx-mini {outline-color:var(--brand-accent)}
+html[data-identity="signature"] .sx-detail .chart svg path:not([stroke-dasharray]) {stroke:var(--brand-accent)}
+html[data-identity="signature"] .sx-detail .chart svg path[stroke-dasharray] {stroke:var(--brand-muted)}
+html[data-identity="signature"] .host-premium-link {display:block;width:fit-content;margin:30px auto 0;padding:10px 16px;color:var(--brand-muted);font-size:13px;text-underline-offset:4px}
+html[data-identity="signature"] #account-sheet {background:#fffffff5;color:var(--brand-ink);border-color:var(--brand-line);box-shadow:0 24px 88px #17223935}
+html[data-identity="signature"] #account-sheet::backdrop {background:#17223946}
+html[data-identity="signature"] .sheet-content h2 {font:590 28px/1.2 var(--room-type)}
+html[data-identity="signature"] .sheet-content:has([data-auth-form]) h2::before {
+  content:"";display:inline-block;width:1em;height:1em;margin-right:.32em;vertical-align:-.08em;
+  background:url('/assets/signature-mark.svg') center/contain no-repeat;
+}
+html[data-identity="signature"] .sheet-content :is(.sheet-links a,.sheet-links button,input) {border-color:var(--brand-line);color:var(--brand-ink)}
+html[data-identity="signature"] :is(.sheet-close,.sheet-content .account-link,.sheet-content .speech-switch) {color:var(--brand-deep)}
+html[data-identity="signature"] .sheet-content .speech-switch span {background:var(--brand-tint)}
+html[data-identity="signature"] :is(.sheet-content .button--primary,.install-retry,body:has(#plans) .commit) {background:var(--brand-accent);border-color:var(--brand-accent);color:white}
+html[data-identity="signature"] body:has(#plans) main a {color:var(--brand-deep)}
+html[data-identity="signature"] body :is(.button--primary,.talk-puck,.ge-primary,.install-retry):not(:disabled):hover {background:var(--brand-deep);color:white}
+html[data-identity="signature"] body :focus-visible {outline-color:var(--brand-accent)!important}
+@media(forced-colors:active) {
+  html[data-identity="signature"] :is(.brand .brand-sign,.wordmark .seat-mark,.ge-wordmark .seat-mark) {background:CanvasText!important;forced-color-adjust:none}
+}
+
+/* Permanent public language choice. The adjacent overflow menu stays independent. */
+.mast-tools {display:flex;align-items:center;gap:9px}
+html .brand-language {
+  display:inline-flex;align-items:center;isolation:isolate;flex:none;gap:0;
+  padding:2px;border-radius:99px;border:1px solid var(--brand-line,#d7dee9);
+  background:#f7f9fc;box-shadow:inset 0 1px 0 white;line-height:1;
+}
+html body .brand-language button {
+  position:relative;appearance:none;display:grid;place-content:center;min-width:38px;min-height:34px;
+  padding:5px 8px;border:0;border-radius:99px;background:transparent;
+  font:540 12px/1 var(--room-type,system-ui,sans-serif);letter-spacing:0;color:var(--brand-muted,#536078);
+  box-shadow:none;cursor:pointer;white-space:nowrap;text-decoration:none;
+}
+html body .brand-language button[aria-pressed=true] {background:#fff;color:var(--brand-deep,#182e82);box-shadow:0 1px 4px #17223928}
+html body .brand-language button:focus-visible {z-index:1;outline:2px solid var(--brand-accent,#254bd1);outline-offset:1px}
+.host-settings{position:relative;z-index:5}
+.host-settings summary {list-style:none;display:grid;place-items:center;cursor:pointer;width:40px;min-height:44px;border-radius:15px;font-size:13px;letter-spacing:1px;color:var(--brand-muted,#536078)}
+.host-settings summary::-webkit-details-marker {display:none}
+.host-settings[open] summary {background:var(--brand-tint,#ebf0ff)}
+.host-settings a {position:absolute;top:calc(100% + 5px);right:0;padding:13px 16px;border:1px solid var(--brand-line,#d7dee9);border-radius:15px;box-shadow:0 7px 28px #17223915;background:white;color:var(--brand-deep,#182e82);white-space:nowrap;font-size:14px;text-decoration:none}
+html .guided-entry .ge-rail:has(.guide-language) {display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:12px}
+html .guided-entry .ge-rail .guide-language {grid-column:3;grid-row:1;justify-self:end;align-self:center}
+html .guided-entry .ge-rail .receiver-settings {grid-column:4;grid-row:1}
+.ge-workspace .guide-language {position:absolute;right:clamp(12px,3vw,32px);top:12px;z-index:2}
+@media(max-width:640px){
+  html body .brand-language button {min-width:36px;min-height:40px}
+  html body[data-workspace] .site-header .site-header-inner {padding-inline:clamp(10px,3vw,18px);gap:5px}
+  html body[data-workspace] .site-header .header-utilities {gap:3px;flex-shrink:0}
+  html body[data-workspace] .site-header .header-account {padding-inline:5px;font-size:12px}
+  html body[data-workspace=connections] .site-header .site-nav {display:none}
+  html body .guided-entry .ge-rail:has(.guide-language) {grid-template-columns:minmax(0,1fr) auto auto;grid-template-rows:auto auto;gap:1px 6px;padding-inline:clamp(10px,3vw,18px)}
+  html body .guided-entry .ge-rail .guide-language {grid-column:2;grid-row:1 / span 2}
+  html body .guided-entry .ge-rail .receiver-settings {grid-column:3;grid-row:1 / span 2;position:static;justify-self:center;min-width:40px;width:40px;min-height:44px;padding:0;font-size:0;gap:0}
+  html .mast-tools {gap:3px}
+  html .mast-tools summary {width:34px}
+}
+@media(max-width:360px){
+  html body[data-workspace] .site-header .wordmark {font-size:16px;gap:3px;flex:1;min-width:0}
+  html body[data-workspace] .site-header .wordmark [data-brand-text] {min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  html body[data-workspace] .site-header .header-menu {min-width:44px;width:44px}
+  html body .mast .mast-in {padding-inline:10px}
+}
+
+/* A recorded decision uses the same paper, ink and controls as its fund office. */
+html[data-identity="signature"] :is([data-office-id] .review-receipt, .portfolio-view .trace),
+html[data-identity="signature"] .review-receipt .trace {
+  color: var(--brand-ink);
+  background: white;
+  border-color: var(--brand-line);
+}
+
+html[data-identity="signature"] .review-receipt :is(.receipt-header > span:first-child, .receipt-detail > summary),
+html[data-identity="signature"] :is(.review-receipt, .portfolio-view) .trade-question,
+html[data-identity="signature"] :is(.review-receipt, .portfolio-view) .trace :is(.trace-accordion > summary, .review-duty > summary) {
+  color: var(--brand-accent);
+}
+html[data-identity="signature"] .review-receipt .receipt-header i {
+  background: currentColor;
+}
+html[data-identity="signature"] .review-receipt :is(.receipt-execution, .receipt-cash, h2 > span, .receipt-cash strong span),
+html[data-identity="signature"] :is(.review-receipt, .portfolio-view) .trace :is(.eyebrow, .trace-meta, dt, .trace-source, .trace-accordion > summary span) {
+  color: var(--brand-muted);
+}
+html[data-identity="signature"] .review-receipt :is(.receipt-cash strong, .receipt-execution strong),
+html[data-identity="signature"] :is(.review-receipt, .portfolio-view) .trace :is(h3, p, strong, dd, .trace-reconsider b) {
+  color: var(--brand-ink);
+}
+html[data-identity="signature"] .review-receipt :is(.receipt-execution, .receipt-cash, .receipt-detail > summary),
+html[data-identity="signature"] :is(.review-receipt, .portfolio-view) .trace :is(.trace-call, .trace-accordion, .trace-execution dl > div, article) {
+  border-color: var(--brand-line);
+}
+html[data-identity="signature"] :is(.review-receipt, .portfolio-view) .trace-call {
+  background: var(--brand-paper);
+}
+html[data-identity="signature"] :is(.review-receipt, .portfolio-view) .tag {
+  color: var(--brand-muted);
+  background: var(--brand-paper);
+  border-color: var(--brand-line);
+}
+html[data-identity="signature"] :is(.review-receipt, .portfolio-view) .tag--green {
+  color: var(--brand-deep);
+  background: var(--brand-tint);
+}
+html[data-identity="signature"] :is(.review-receipt, .portfolio-view) .tag--orange {
+  color: #832d23;
+  background: #fff2ec;
+  border-color: #ddb8ab;
+}
+html[data-identity="signature"] :is(.review-receipt, .portfolio-view) :is(.trade-question, summary):focus-visible {
+  outline-color: var(--brand-accent);
+}
+

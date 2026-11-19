@@ -1,0 +1,3099 @@
+{
+  "schemaVersion": 1,
+  "dataRevision": "2017-asu2016-09.1",
+  "priceSourceId": "wiki",
+  "security": {
+    "ticker": "AZO",
+    "name": "AutoZone, Inc.",
+    "currency": "USD",
+    "exchange": "NYSE"
+  },
+  "methodSources": [
+    {
+      "id": "owner-earnings",
+      "title": "Berkshire Hathaway 1986 shareholder letter · owner earnings appendix",
+      "url": "https://www.berkshirehathaway.com/letters/1986.html",
+      "letterDate": "1987-02-27",
+      "principle": "Consider cash required to maintain the business, including maintenance investment and necessary working capital. Total capital expenditure includes possible growth spending."
+    },
+    {
+      "id": "price-and-value",
+      "title": "Berkshire Hathaway 1992 shareholder letter · investment valuation",
+      "url": "https://www.berkshirehathaway.com/letters/1992.html",
+      "letterDate": "1993-03-01",
+      "principle": "Consider long-term cash generation and uncertainty. Demand a margin between a conservatively estimated value and the price paid."
+    }
+  ],
+  "sources": [
+    {
+      "id": "fy16",
+      "title": "AutoZone 10-K · 2016-08-27",
+      "url": "https://www.sec.gov/Archives/edgar/data/866787/000119312516745160/d253831d10k.htm",
+      "accession": "0001193125-16-745160",
+      "periodEnd": "2016-08-27",
+      "availableAt": "2016-10-24T20:35:15.000Z",
+      "form": "10-K"
+    },
+    {
+      "id": "q1",
+      "title": "AutoZone 10-Q · 2016-11-19",
+      "url": "https://www.sec.gov/Archives/edgar/data/866787/000119312516793056/d242685d10q.htm",
+      "accession": "0001193125-16-793056",
+      "periodEnd": "2016-11-19",
+      "availableAt": "2016-12-14T21:45:56.000Z",
+      "form": "10-Q"
+    },
+    {
+      "id": "q2",
+      "title": "AutoZone 10-Q · 2017-02-11",
+      "url": "https://www.sec.gov/Archives/edgar/data/866787/000119312517090804/d351053d10q.htm",
+      "accession": "0001193125-17-090804",
+      "periodEnd": "2017-02-11",
+      "availableAt": "2017-03-21T20:46:51.000Z",
+      "form": "10-Q"
+    },
+    {
+      "id": "q3",
+      "title": "AutoZone 10-Q · 2017-05-06",
+      "url": "https://www.sec.gov/Archives/edgar/data/866787/000119312517203540/d382576d10q.htm",
+      "accession": "0001193125-17-203540",
+      "periodEnd": "2017-05-06",
+      "availableAt": "2017-06-14T20:33:53.000Z",
+      "form": "10-Q"
+    },
+    {
+      "id": "fy17-release",
+      "title": "AutoZone FY2017 preliminary results · 8-K Exhibit 99.1",
+      "url": "https://www.sec.gov/Archives/edgar/data/866787/000117184317005596/exh_991.htm",
+      "accession": "0001171843-17-005596",
+      "periodEnd": "2017-08-26",
+      "availableAt": "2017-09-19T11:00:21.000Z",
+      "form": "8-K"
+    },
+    {
+      "id": "wiki",
+      "title": "Nasdaq Data Link · WIKI Prices (public domain)",
+      "url": "https://data.nasdaq.com/databases/WIKIP",
+      "mirror": "https://www.kaggle.com/api/v1/datasets/download/marketneutral/quandl-wiki-prices-us-equites?datasetVersionNumber=1",
+      "archiveSha256": "adfd226694c6f3ec2c56b585d973764180a39a3ec516601721e90096dc1de94f",
+      "vintage": "Discontinued source's archived observations, not an archived daily first-release feed."
+    }
+  ],
+  "design": {
+    "start": "2016-12-30",
+    "end": "2017-12-29",
+    "timeZone": "America/New_York",
+    "fundUniverse": [
+      "AZO",
+      "USD cash"
+    ],
+    "selection": "One established specialist retailer with public filings available before the first decision. Calendar 2017 is the last complete calendar year of the discontinued WIKI database. The case does not test stock selection across a universe.",
+    "review": "Last NYSE session of each prior calendar quarter, 22:00 Eastern; execute at the next session opening print.",
+    "benchmark": "Buy and hold the identical security from the first executable open. Apply identical cost, cash and fill conventions.",
+    "marketData": "Raw USD opening and closing prices. Date/time stamps denote scheduled NYSE regular session boundaries. Feed documentation gives 21:15 Eastern as weekday update time; first-publication receipts per bar are unavailable.",
+    "corporateActions": "All sampled WIKI ex-dividend fields are zero and split factors equal one. No adjustment required.",
+    "missingMarketDates": [
+      "2017-11-08"
+    ],
+    "gapTreatment": "Feed omits one regular session, November 8. Skip its valuation; no interpolation. No decision, fill or endpoint is on that date.",
+    "pretraining": "Ticker, dates and source URLs can be withheld from model inputs. Recognition from public training data cannot be excluded."
+  },
+  "snapshots": [
+    {
+      "id": "r1",
+      "asOf": "2016-12-31T03:00:00Z",
+      "closeAt": "2016-12-30T21:00:00Z",
+      "close": 789.79,
+      "closeAvailableAt": "2016-12-31T02:15:00Z",
+      "closeSourceId": "wiki",
+      "evidence": [
+        {
+          "label": "Trailing 52-week revenue",
+          "value": 10717.478,
+          "unit": "USD million",
+          "periodStart": "2015-11-22",
+          "periodEnd": "2016-11-19",
+          "sourceId": "q1",
+          "sourceIds": [
+            "fy16",
+            "q1"
+          ],
+          "availableAt": "2016-12-14T21:45:56.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD.",
+          "id": "r1-e01"
+        },
+        {
+          "label": "Trailing 52-week operating margin",
+          "value": 19.4197,
+          "unit": "%",
+          "periodStart": "2015-11-22",
+          "periodEnd": "2016-11-19",
+          "sourceId": "q1",
+          "sourceIds": [
+            "fy16",
+            "q1"
+          ],
+          "availableAt": "2016-12-14T21:45:56.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD. Operating income divided by sales.",
+          "id": "r1-e02"
+        },
+        {
+          "label": "Trailing 52-week net income",
+          "value": 1261.02,
+          "unit": "USD million",
+          "periodStart": "2015-11-22",
+          "periodEnd": "2016-11-19",
+          "sourceId": "q1",
+          "sourceIds": [
+            "fy16",
+            "q1"
+          ],
+          "availableAt": "2016-12-14T21:45:56.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD.",
+          "id": "r1-e03"
+        },
+        {
+          "label": "Trailing 52-week weighted average diluted shares (estimate)",
+          "value": 30.15685,
+          "unit": "million shares",
+          "periodStart": "2015-11-22",
+          "periodEnd": "2016-11-19",
+          "sourceId": "q1",
+          "sourceIds": [
+            "fy16",
+            "q1"
+          ],
+          "availableAt": "2016-12-14T21:45:56.000Z",
+          "formula": "52-week weighted share count bridged by fiscal YTD weeks; filed values are rounded.",
+          "id": "r1-e04"
+        },
+        {
+          "label": "Trailing 52-week diluted earnings per share (estimate)",
+          "value": 41.81538,
+          "unit": "USD/share",
+          "periodStart": "2015-11-22",
+          "periodEnd": "2016-11-19",
+          "sourceId": "q1",
+          "sourceIds": [
+            "fy16",
+            "q1"
+          ],
+          "availableAt": "2016-12-14T21:45:56.000Z",
+          "formula": "Bridged trailing net income divided by estimated trailing weighted average diluted shares.",
+          "id": "r1-e05"
+        },
+        {
+          "label": "Trailing 52-week cash from continuing operations",
+          "value": 1700.557,
+          "unit": "USD million",
+          "periodStart": "2015-11-22",
+          "periodEnd": "2016-11-19",
+          "sourceId": "q1",
+          "sourceIds": [
+            "fy16",
+            "q1"
+          ],
+          "availableAt": "2016-12-14T21:45:56.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD. Reclassify the FY16 10-K's $63.731m financing tax benefit into CFO to match the 10-Q comparatives under ASU 2016-09.",
+          "id": "r1-e06"
+        },
+        {
+          "label": "Trailing 52-week capital spending, including growth spending",
+          "value": 500.05,
+          "unit": "USD million",
+          "periodStart": "2015-11-22",
+          "periodEnd": "2016-11-19",
+          "sourceId": "q1",
+          "sourceIds": [
+            "fy16",
+            "q1"
+          ],
+          "availableAt": "2016-12-14T21:45:56.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD.",
+          "id": "r1-e07"
+        },
+        {
+          "label": "Trailing 52-week free cash flow proxy; maintenance capex is undisclosed",
+          "value": 1200.507,
+          "unit": "USD million",
+          "periodStart": "2015-11-22",
+          "periodEnd": "2016-11-19",
+          "sourceId": "q1",
+          "sourceIds": [
+            "fy16",
+            "q1"
+          ],
+          "availableAt": "2016-12-14T21:45:56.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD. Reclassify the FY16 10-K's $63.731m financing tax benefit into CFO to match the 10-Q comparatives under ASU 2016-09. Operating cash flow less total purchases of property and equipment.",
+          "id": "r1-e08"
+        },
+        {
+          "label": "Noncurrent long-term debt at period end",
+          "value": 4997.446,
+          "unit": "USD million",
+          "periodStart": "2016-11-19",
+          "periodEnd": "2016-11-19",
+          "sourceId": "q1",
+          "sourceIds": [
+            "q1"
+          ],
+          "availableAt": "2016-12-14T21:45:56.000Z",
+          "id": "r1-e09"
+        },
+        {
+          "label": "Cash and equivalents at period end",
+          "value": 195.538,
+          "unit": "USD million",
+          "periodStart": "2016-11-19",
+          "periodEnd": "2016-11-19",
+          "sourceId": "q1",
+          "sourceIds": [
+            "q1"
+          ],
+          "availableAt": "2016-12-14T21:45:56.000Z",
+          "id": "r1-e10"
+        },
+        {
+          "label": "Sales growth, latest 12 fiscal weeks versus prior comparable period",
+          "value": 3.42835,
+          "unit": "%",
+          "periodStart": "2016-08-28",
+          "periodEnd": "2016-11-19",
+          "sourceId": "q1",
+          "sourceIds": [
+            "q1"
+          ],
+          "availableAt": "2016-12-14T21:45:56.000Z",
+          "id": "r1-e11"
+        },
+        {
+          "label": "Latest audited full-year diluted earnings per share",
+          "value": 40.7,
+          "unit": "USD/share",
+          "periodStart": "2015-08-30",
+          "periodEnd": "2016-08-27",
+          "sourceId": "fy16",
+          "sourceIds": [
+            "fy16"
+          ],
+          "availableAt": "2016-10-24T20:35:15.000Z",
+          "id": "r1-e12"
+        }
+      ],
+      "sourceIds": [
+        "fy16",
+        "q1",
+        "wiki"
+      ]
+    },
+    {
+      "id": "r2",
+      "asOf": "2017-04-01T02:00:00Z",
+      "closeAt": "2017-03-31T20:00:00Z",
+      "close": 723.05,
+      "closeAvailableAt": "2017-04-01T01:15:00Z",
+      "closeSourceId": "wiki",
+      "evidence": [
+        {
+          "label": "Trailing 52-week revenue",
+          "value": 10749.506,
+          "unit": "USD million",
+          "periodStart": "2016-02-14",
+          "periodEnd": "2017-02-11",
+          "sourceId": "q2",
+          "sourceIds": [
+            "fy16",
+            "q2"
+          ],
+          "availableAt": "2017-03-21T20:46:51.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD.",
+          "id": "r2-e01"
+        },
+        {
+          "label": "Trailing 52-week operating margin",
+          "value": 19.37402,
+          "unit": "%",
+          "periodStart": "2016-02-14",
+          "periodEnd": "2017-02-11",
+          "sourceId": "q2",
+          "sourceIds": [
+            "fy16",
+            "q2"
+          ],
+          "availableAt": "2017-03-21T20:46:51.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD. Operating income divided by sales.",
+          "id": "r2-e02"
+        },
+        {
+          "label": "Trailing 52-week net income",
+          "value": 1269.552,
+          "unit": "USD million",
+          "periodStart": "2016-02-14",
+          "periodEnd": "2017-02-11",
+          "sourceId": "q2",
+          "sourceIds": [
+            "fy16",
+            "q2"
+          ],
+          "availableAt": "2017-03-21T20:46:51.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD.",
+          "id": "r2-e03"
+        },
+        {
+          "label": "Trailing 52-week weighted average diluted shares (estimate)",
+          "value": 29.82523,
+          "unit": "million shares",
+          "periodStart": "2016-02-14",
+          "periodEnd": "2017-02-11",
+          "sourceId": "q2",
+          "sourceIds": [
+            "fy16",
+            "q2"
+          ],
+          "availableAt": "2017-03-21T20:46:51.000Z",
+          "formula": "52-week weighted share count bridged by fiscal YTD weeks; filed values are rounded.",
+          "id": "r2-e04"
+        },
+        {
+          "label": "Trailing 52-week diluted earnings per share (estimate)",
+          "value": 42.56638,
+          "unit": "USD/share",
+          "periodStart": "2016-02-14",
+          "periodEnd": "2017-02-11",
+          "sourceId": "q2",
+          "sourceIds": [
+            "fy16",
+            "q2"
+          ],
+          "availableAt": "2017-03-21T20:46:51.000Z",
+          "formula": "Bridged trailing net income divided by estimated trailing weighted average diluted shares.",
+          "id": "r2-e05"
+        },
+        {
+          "label": "Trailing 52-week cash from continuing operations",
+          "value": 1642.541,
+          "unit": "USD million",
+          "periodStart": "2016-02-14",
+          "periodEnd": "2017-02-11",
+          "sourceId": "q2",
+          "sourceIds": [
+            "fy16",
+            "q2"
+          ],
+          "availableAt": "2017-03-21T20:46:51.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD. Reclassify the FY16 10-K's $63.731m financing tax benefit into CFO to match the 10-Q comparatives under ASU 2016-09.",
+          "id": "r2-e06"
+        },
+        {
+          "label": "Trailing 52-week capital spending, including growth spending",
+          "value": 518.303,
+          "unit": "USD million",
+          "periodStart": "2016-02-14",
+          "periodEnd": "2017-02-11",
+          "sourceId": "q2",
+          "sourceIds": [
+            "fy16",
+            "q2"
+          ],
+          "availableAt": "2017-03-21T20:46:51.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD.",
+          "id": "r2-e07"
+        },
+        {
+          "label": "Trailing 52-week free cash flow proxy; maintenance capex is undisclosed",
+          "value": 1124.238,
+          "unit": "USD million",
+          "periodStart": "2016-02-14",
+          "periodEnd": "2017-02-11",
+          "sourceId": "q2",
+          "sourceIds": [
+            "fy16",
+            "q2"
+          ],
+          "availableAt": "2017-03-21T20:46:51.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD. Reclassify the FY16 10-K's $63.731m financing tax benefit into CFO to match the 10-Q comparatives under ASU 2016-09. Operating cash flow less total purchases of property and equipment.",
+          "id": "r2-e08"
+        },
+        {
+          "label": "Noncurrent long-term debt at period end",
+          "value": 5151.862,
+          "unit": "USD million",
+          "periodStart": "2017-02-11",
+          "periodEnd": "2017-02-11",
+          "sourceId": "q2",
+          "sourceIds": [
+            "q2"
+          ],
+          "availableAt": "2017-03-21T20:46:51.000Z",
+          "id": "r2-e09"
+        },
+        {
+          "label": "Cash and equivalents at period end",
+          "value": 210.649,
+          "unit": "USD million",
+          "periodStart": "2017-02-11",
+          "periodEnd": "2017-02-11",
+          "sourceId": "q2",
+          "sourceIds": [
+            "q2"
+          ],
+          "availableAt": "2017-03-21T20:46:51.000Z",
+          "id": "r2-e10"
+        },
+        {
+          "label": "Sales growth, latest 24 fiscal weeks versus prior comparable period",
+          "value": 2.45152,
+          "unit": "%",
+          "periodStart": "2016-08-28",
+          "periodEnd": "2017-02-11",
+          "sourceId": "q2",
+          "sourceIds": [
+            "q2"
+          ],
+          "availableAt": "2017-03-21T20:46:51.000Z",
+          "id": "r2-e11"
+        },
+        {
+          "label": "Latest audited full-year diluted earnings per share",
+          "value": 40.7,
+          "unit": "USD/share",
+          "periodStart": "2015-08-30",
+          "periodEnd": "2016-08-27",
+          "sourceId": "fy16",
+          "sourceIds": [
+            "fy16"
+          ],
+          "availableAt": "2016-10-24T20:35:15.000Z",
+          "id": "r2-e12"
+        }
+      ],
+      "sourceIds": [
+        "fy16",
+        "q2",
+        "wiki"
+      ]
+    },
+    {
+      "id": "r3",
+      "asOf": "2017-07-01T02:00:00Z",
+      "closeAt": "2017-06-30T20:00:00Z",
+      "close": 570.46,
+      "closeAvailableAt": "2017-07-01T01:15:00Z",
+      "closeSourceId": "wiki",
+      "evidence": [
+        {
+          "label": "Trailing 52-week revenue",
+          "value": 10774.84,
+          "unit": "USD million",
+          "periodStart": "2016-05-08",
+          "periodEnd": "2017-05-06",
+          "sourceId": "q3",
+          "sourceIds": [
+            "fy16",
+            "q3"
+          ],
+          "availableAt": "2017-06-14T20:33:53.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD.",
+          "id": "r3-e01"
+        },
+        {
+          "label": "Trailing 52-week operating margin",
+          "value": 19.26533,
+          "unit": "%",
+          "periodStart": "2016-05-08",
+          "periodEnd": "2017-05-06",
+          "sourceId": "q3",
+          "sourceIds": [
+            "fy16",
+            "q3"
+          ],
+          "availableAt": "2017-06-14T20:33:53.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD. Operating income divided by sales.",
+          "id": "r3-e02"
+        },
+        {
+          "label": "Trailing 52-week net income",
+          "value": 1273.737,
+          "unit": "USD million",
+          "periodStart": "2016-05-08",
+          "periodEnd": "2017-05-06",
+          "sourceId": "q3",
+          "sourceIds": [
+            "fy16",
+            "q3"
+          ],
+          "availableAt": "2017-06-14T20:33:53.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD.",
+          "id": "r3-e03"
+        },
+        {
+          "label": "Trailing 52-week weighted average diluted shares (estimate)",
+          "value": 29.50215,
+          "unit": "million shares",
+          "periodStart": "2016-05-08",
+          "periodEnd": "2017-05-06",
+          "sourceId": "q3",
+          "sourceIds": [
+            "fy16",
+            "q3"
+          ],
+          "availableAt": "2017-06-14T20:33:53.000Z",
+          "formula": "52-week weighted share count bridged by fiscal YTD weeks; filed values are rounded.",
+          "id": "r3-e04"
+        },
+        {
+          "label": "Trailing 52-week diluted earnings per share (estimate)",
+          "value": 43.17437,
+          "unit": "USD/share",
+          "periodStart": "2016-05-08",
+          "periodEnd": "2017-05-06",
+          "sourceId": "q3",
+          "sourceIds": [
+            "fy16",
+            "q3"
+          ],
+          "availableAt": "2017-06-14T20:33:53.000Z",
+          "formula": "Bridged trailing net income divided by estimated trailing weighted average diluted shares.",
+          "id": "r3-e05"
+        },
+        {
+          "label": "Trailing 52-week cash from continuing operations",
+          "value": 1555.061,
+          "unit": "USD million",
+          "periodStart": "2016-05-08",
+          "periodEnd": "2017-05-06",
+          "sourceId": "q3",
+          "sourceIds": [
+            "fy16",
+            "q3"
+          ],
+          "availableAt": "2017-06-14T20:33:53.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD. Reclassify the FY16 10-K's $63.731m financing tax benefit into CFO to match the 10-Q comparatives under ASU 2016-09.",
+          "id": "r3-e06"
+        },
+        {
+          "label": "Trailing 52-week capital spending, including growth spending",
+          "value": 546.803,
+          "unit": "USD million",
+          "periodStart": "2016-05-08",
+          "periodEnd": "2017-05-06",
+          "sourceId": "q3",
+          "sourceIds": [
+            "fy16",
+            "q3"
+          ],
+          "availableAt": "2017-06-14T20:33:53.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD.",
+          "id": "r3-e07"
+        },
+        {
+          "label": "Trailing 52-week free cash flow proxy; maintenance capex is undisclosed",
+          "value": 1008.258,
+          "unit": "USD million",
+          "periodStart": "2016-05-08",
+          "periodEnd": "2017-05-06",
+          "sourceId": "q3",
+          "sourceIds": [
+            "fy16",
+            "q3"
+          ],
+          "availableAt": "2017-06-14T20:33:53.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD. Reclassify the FY16 10-K's $63.731m financing tax benefit into CFO to match the 10-Q comparatives under ASU 2016-09. Operating cash flow less total purchases of property and equipment.",
+          "id": "r3-e08"
+        },
+        {
+          "label": "Noncurrent long-term debt at period end",
+          "value": 5152.843,
+          "unit": "USD million",
+          "periodStart": "2017-05-06",
+          "periodEnd": "2017-05-06",
+          "sourceId": "q3",
+          "sourceIds": [
+            "q3"
+          ],
+          "availableAt": "2017-06-14T20:33:53.000Z",
+          "id": "r3-e09"
+        },
+        {
+          "label": "Cash and equivalents at period end",
+          "value": 227.141,
+          "unit": "USD million",
+          "periodStart": "2017-05-06",
+          "periodEnd": "2017-05-06",
+          "sourceId": "q3",
+          "sourceIds": [
+            "q3"
+          ],
+          "availableAt": "2017-06-14T20:33:53.000Z",
+          "id": "r3-e10"
+        },
+        {
+          "label": "Sales growth, latest 36 fiscal weeks versus prior comparable period",
+          "value": 1.92298,
+          "unit": "%",
+          "periodStart": "2016-08-28",
+          "periodEnd": "2017-05-06",
+          "sourceId": "q3",
+          "sourceIds": [
+            "q3"
+          ],
+          "availableAt": "2017-06-14T20:33:53.000Z",
+          "id": "r3-e11"
+        },
+        {
+          "label": "Latest audited full-year diluted earnings per share",
+          "value": 40.7,
+          "unit": "USD/share",
+          "periodStart": "2015-08-30",
+          "periodEnd": "2016-08-27",
+          "sourceId": "fy16",
+          "sourceIds": [
+            "fy16"
+          ],
+          "availableAt": "2016-10-24T20:35:15.000Z",
+          "id": "r3-e12"
+        }
+      ],
+      "sourceIds": [
+        "fy16",
+        "q3",
+        "wiki"
+      ]
+    },
+    {
+      "id": "r4",
+      "asOf": "2017-09-30T02:00:00Z",
+      "closeAt": "2017-09-29T20:00:00Z",
+      "close": 595.11,
+      "closeAvailableAt": "2017-09-30T01:15:00Z",
+      "closeSourceId": "wiki",
+      "evidence": [
+        {
+          "label": "Latest 52-week revenue, preliminary",
+          "value": 10888.676,
+          "unit": "USD million",
+          "periodStart": "2016-08-28",
+          "periodEnd": "2017-08-26",
+          "sourceId": "fy17-release",
+          "sourceIds": [
+            "fy17-release"
+          ],
+          "availableAt": "2017-09-19T11:00:21.000Z",
+          "id": "r4-e01"
+        },
+        {
+          "label": "Latest 52-week operating margin, preliminary",
+          "value": 19.10305,
+          "unit": "%",
+          "periodStart": "2016-08-28",
+          "periodEnd": "2017-08-26",
+          "sourceId": "fy17-release",
+          "sourceIds": [
+            "fy17-release"
+          ],
+          "availableAt": "2017-09-19T11:00:21.000Z",
+          "id": "r4-e02"
+        },
+        {
+          "label": "Latest 52-week net income, preliminary",
+          "value": 1280.869,
+          "unit": "USD million",
+          "periodStart": "2016-08-28",
+          "periodEnd": "2017-08-26",
+          "sourceId": "fy17-release",
+          "sourceIds": [
+            "fy17-release"
+          ],
+          "availableAt": "2017-09-19T11:00:21.000Z",
+          "id": "r4-e03"
+        },
+        {
+          "label": "Latest 52-week weighted average diluted shares, preliminary",
+          "value": 29.065,
+          "unit": "million shares",
+          "periodStart": "2016-08-28",
+          "periodEnd": "2017-08-26",
+          "sourceId": "fy17-release",
+          "sourceIds": [
+            "fy17-release"
+          ],
+          "availableAt": "2017-09-19T11:00:21.000Z",
+          "id": "r4-e04"
+        },
+        {
+          "label": "Latest 52-week GAAP diluted earnings per share, preliminary",
+          "value": 44.07,
+          "unit": "USD/share",
+          "periodStart": "2016-08-28",
+          "periodEnd": "2017-08-26",
+          "sourceId": "fy17-release",
+          "sourceIds": [
+            "fy17-release"
+          ],
+          "availableAt": "2017-09-19T11:00:21.000Z",
+          "id": "r4-e05"
+        },
+        {
+          "label": "Latest 52-week capital spending, including growth spending",
+          "value": 553.832,
+          "unit": "USD million",
+          "periodStart": "2016-08-28",
+          "periodEnd": "2017-08-26",
+          "sourceId": "fy17-release",
+          "sourceIds": [
+            "fy17-release"
+          ],
+          "availableAt": "2017-09-19T11:00:21.000Z",
+          "id": "r4-e06"
+        },
+        {
+          "label": "Total debt at period end",
+          "value": 5081.238,
+          "unit": "USD million",
+          "periodStart": "2017-08-26",
+          "periodEnd": "2017-08-26",
+          "sourceId": "fy17-release",
+          "sourceIds": [
+            "fy17-release"
+          ],
+          "availableAt": "2017-09-19T11:00:21.000Z",
+          "id": "r4-e07"
+        },
+        {
+          "label": "Cash and equivalents at period end",
+          "value": 293.27,
+          "unit": "USD million",
+          "periodStart": "2017-08-26",
+          "periodEnd": "2017-08-26",
+          "sourceId": "fy17-release",
+          "sourceIds": [
+            "fy17-release"
+          ],
+          "availableAt": "2017-09-19T11:00:21.000Z",
+          "id": "r4-e08"
+        },
+        {
+          "label": "Net sales growth versus the prior full year",
+          "value": 2.4,
+          "unit": "%",
+          "periodStart": "2016-08-28",
+          "periodEnd": "2017-08-26",
+          "sourceId": "fy17-release",
+          "sourceIds": [
+            "fy17-release"
+          ],
+          "availableAt": "2017-09-19T11:00:21.000Z",
+          "id": "r4-e09"
+        },
+        {
+          "label": "Domestic same-store sales growth versus the prior full year",
+          "value": 0.5,
+          "unit": "%",
+          "periodStart": "2016-08-28",
+          "periodEnd": "2017-08-26",
+          "sourceId": "fy17-release",
+          "sourceIds": [
+            "fy17-release"
+          ],
+          "availableAt": "2017-09-19T11:00:21.000Z",
+          "id": "r4-e10"
+        },
+        {
+          "label": "Tax-accounting benefit included in latest 52-week diluted earnings per share",
+          "value": 1.03,
+          "unit": "USD/share",
+          "periodStart": "2016-08-28",
+          "periodEnd": "2017-08-26",
+          "sourceId": "fy17-release",
+          "sourceIds": [
+            "fy17-release"
+          ],
+          "availableAt": "2017-09-19T11:00:21.000Z",
+          "id": "r4-e11"
+        },
+        {
+          "label": "Previous filing's trailing 52-week free cash flow proxy, lagged one fiscal quarter; maintenance capex is undisclosed",
+          "value": 1008.258,
+          "unit": "USD million",
+          "periodStart": "2016-05-08",
+          "periodEnd": "2017-05-06",
+          "sourceId": "q3",
+          "sourceIds": [
+            "fy16",
+            "q3"
+          ],
+          "availableAt": "2017-06-14T20:33:53.000Z",
+          "formula": "Prior filed 52 weeks plus current fiscal YTD minus the prior-year comparable YTD. Reclassify the FY16 10-K's $63.731m financing tax benefit into CFO to match the 10-Q comparatives under ASU 2016-09. Operating cash flow less total purchases of property and equipment.",
+          "id": "r4-e12"
+        }
+      ],
+      "sourceIds": [
+        "fy17-release",
+        "fy16",
+        "q3",
+        "wiki"
+      ]
+    }
+  ],
+  "bars": [
+    {
+      "date": "2016-12-30",
+      "openAt": "2016-12-30T14:30:00Z",
+      "closeAt": "2016-12-30T21:00:00Z",
+      "availableAt": "2016-12-31T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 800.35,
+      "close": 789.79
+    },
+    {
+      "date": "2017-01-03",
+      "openAt": "2017-01-03T14:30:00Z",
+      "closeAt": "2017-01-03T21:00:00Z",
+      "availableAt": "2017-01-04T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 795.58,
+      "close": 791.46
+    },
+    {
+      "date": "2017-01-04",
+      "openAt": "2017-01-04T14:30:00Z",
+      "closeAt": "2017-01-04T21:00:00Z",
+      "availableAt": "2017-01-05T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 789.94,
+      "close": 793.04
+    },
+    {
+      "date": "2017-01-05",
+      "openAt": "2017-01-05T14:30:00Z",
+      "closeAt": "2017-01-05T21:00:00Z",
+      "availableAt": "2017-01-06T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 788.72,
+      "close": 792.0
+    },
+    {
+      "date": "2017-01-06",
+      "openAt": "2017-01-06T14:30:00Z",
+      "closeAt": "2017-01-06T21:00:00Z",
+      "availableAt": "2017-01-07T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 791.0,
+      "close": 792.91
+    },
+    {
+      "date": "2017-01-09",
+      "openAt": "2017-01-09T14:30:00Z",
+      "closeAt": "2017-01-09T21:00:00Z",
+      "availableAt": "2017-01-10T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 795.73,
+      "close": 790.34
+    },
+    {
+      "date": "2017-01-10",
+      "openAt": "2017-01-10T14:30:00Z",
+      "closeAt": "2017-01-10T21:00:00Z",
+      "availableAt": "2017-01-11T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 788.72,
+      "close": 793.68
+    },
+    {
+      "date": "2017-01-11",
+      "openAt": "2017-01-11T14:30:00Z",
+      "closeAt": "2017-01-11T21:00:00Z",
+      "availableAt": "2017-01-12T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 796.16,
+      "close": 792.0
+    },
+    {
+      "date": "2017-01-12",
+      "openAt": "2017-01-12T14:30:00Z",
+      "closeAt": "2017-01-12T21:00:00Z",
+      "availableAt": "2017-01-13T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 788.35,
+      "close": 790.27
+    },
+    {
+      "date": "2017-01-13",
+      "openAt": "2017-01-13T14:30:00Z",
+      "closeAt": "2017-01-13T21:00:00Z",
+      "availableAt": "2017-01-14T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 787.67,
+      "close": 779.81
+    },
+    {
+      "date": "2017-01-17",
+      "openAt": "2017-01-17T14:30:00Z",
+      "closeAt": "2017-01-17T21:00:00Z",
+      "availableAt": "2017-01-18T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 780.26,
+      "close": 782.29
+    },
+    {
+      "date": "2017-01-18",
+      "openAt": "2017-01-18T14:30:00Z",
+      "closeAt": "2017-01-18T21:00:00Z",
+      "availableAt": "2017-01-19T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 785.54,
+      "close": 778.3
+    },
+    {
+      "date": "2017-01-19",
+      "openAt": "2017-01-19T14:30:00Z",
+      "closeAt": "2017-01-19T21:00:00Z",
+      "availableAt": "2017-01-20T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 775.07,
+      "close": 769.9
+    },
+    {
+      "date": "2017-01-20",
+      "openAt": "2017-01-20T14:30:00Z",
+      "closeAt": "2017-01-20T21:00:00Z",
+      "availableAt": "2017-01-21T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 771.2,
+      "close": 770.02
+    },
+    {
+      "date": "2017-01-23",
+      "openAt": "2017-01-23T14:30:00Z",
+      "closeAt": "2017-01-23T21:00:00Z",
+      "availableAt": "2017-01-24T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 753.6,
+      "close": 739.35
+    },
+    {
+      "date": "2017-01-24",
+      "openAt": "2017-01-24T14:30:00Z",
+      "closeAt": "2017-01-24T21:00:00Z",
+      "availableAt": "2017-01-25T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 742.14,
+      "close": 738.43
+    },
+    {
+      "date": "2017-01-25",
+      "openAt": "2017-01-25T14:30:00Z",
+      "closeAt": "2017-01-25T21:00:00Z",
+      "availableAt": "2017-01-26T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 743.43,
+      "close": 735.0
+    },
+    {
+      "date": "2017-01-26",
+      "openAt": "2017-01-26T14:30:00Z",
+      "closeAt": "2017-01-26T21:00:00Z",
+      "availableAt": "2017-01-27T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 736.17,
+      "close": 729.89
+    },
+    {
+      "date": "2017-01-27",
+      "openAt": "2017-01-27T14:30:00Z",
+      "closeAt": "2017-01-27T21:00:00Z",
+      "availableAt": "2017-01-28T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 729.55,
+      "close": 730.0
+    },
+    {
+      "date": "2017-01-30",
+      "openAt": "2017-01-30T14:30:00Z",
+      "closeAt": "2017-01-30T21:00:00Z",
+      "availableAt": "2017-01-31T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 728.45,
+      "close": 724.41
+    },
+    {
+      "date": "2017-01-31",
+      "openAt": "2017-01-31T14:30:00Z",
+      "closeAt": "2017-01-31T21:00:00Z",
+      "availableAt": "2017-02-01T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 725.64,
+      "close": 724.98
+    },
+    {
+      "date": "2017-02-01",
+      "openAt": "2017-02-01T14:30:00Z",
+      "closeAt": "2017-02-01T21:00:00Z",
+      "availableAt": "2017-02-02T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 728.74,
+      "close": 714.99
+    },
+    {
+      "date": "2017-02-02",
+      "openAt": "2017-02-02T14:30:00Z",
+      "closeAt": "2017-02-02T21:00:00Z",
+      "availableAt": "2017-02-03T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 714.24,
+      "close": 725.43
+    },
+    {
+      "date": "2017-02-03",
+      "openAt": "2017-02-03T14:30:00Z",
+      "closeAt": "2017-02-03T21:00:00Z",
+      "availableAt": "2017-02-04T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 724.93,
+      "close": 724.72
+    },
+    {
+      "date": "2017-02-06",
+      "openAt": "2017-02-06T14:30:00Z",
+      "closeAt": "2017-02-06T21:00:00Z",
+      "availableAt": "2017-02-07T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 723.64,
+      "close": 720.49
+    },
+    {
+      "date": "2017-02-07",
+      "openAt": "2017-02-07T14:30:00Z",
+      "closeAt": "2017-02-07T21:00:00Z",
+      "availableAt": "2017-02-08T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 721.15,
+      "close": 721.66
+    },
+    {
+      "date": "2017-02-08",
+      "openAt": "2017-02-08T14:30:00Z",
+      "closeAt": "2017-02-08T21:00:00Z",
+      "availableAt": "2017-02-09T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 720.5,
+      "close": 741.06
+    },
+    {
+      "date": "2017-02-09",
+      "openAt": "2017-02-09T14:30:00Z",
+      "closeAt": "2017-02-09T21:00:00Z",
+      "availableAt": "2017-02-10T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 743.65,
+      "close": 745.94
+    },
+    {
+      "date": "2017-02-10",
+      "openAt": "2017-02-10T14:30:00Z",
+      "closeAt": "2017-02-10T21:00:00Z",
+      "availableAt": "2017-02-11T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 751.61,
+      "close": 740.65
+    },
+    {
+      "date": "2017-02-13",
+      "openAt": "2017-02-13T14:30:00Z",
+      "closeAt": "2017-02-13T21:00:00Z",
+      "availableAt": "2017-02-14T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 741.0,
+      "close": 736.09
+    },
+    {
+      "date": "2017-02-14",
+      "openAt": "2017-02-14T14:30:00Z",
+      "closeAt": "2017-02-14T21:00:00Z",
+      "availableAt": "2017-02-15T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 735.0,
+      "close": 735.79
+    },
+    {
+      "date": "2017-02-15",
+      "openAt": "2017-02-15T14:30:00Z",
+      "closeAt": "2017-02-15T21:00:00Z",
+      "availableAt": "2017-02-16T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 735.0,
+      "close": 739.5
+    },
+    {
+      "date": "2017-02-16",
+      "openAt": "2017-02-16T14:30:00Z",
+      "closeAt": "2017-02-16T21:00:00Z",
+      "availableAt": "2017-02-17T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 743.19,
+      "close": 737.36
+    },
+    {
+      "date": "2017-02-17",
+      "openAt": "2017-02-17T14:30:00Z",
+      "closeAt": "2017-02-17T21:00:00Z",
+      "availableAt": "2017-02-18T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 737.66,
+      "close": 741.05
+    },
+    {
+      "date": "2017-02-21",
+      "openAt": "2017-02-21T14:30:00Z",
+      "closeAt": "2017-02-21T21:00:00Z",
+      "availableAt": "2017-02-22T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 745.0,
+      "close": 740.66
+    },
+    {
+      "date": "2017-02-22",
+      "openAt": "2017-02-22T14:30:00Z",
+      "closeAt": "2017-02-22T21:00:00Z",
+      "availableAt": "2017-02-23T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 743.44,
+      "close": 735.33
+    },
+    {
+      "date": "2017-02-23",
+      "openAt": "2017-02-23T14:30:00Z",
+      "closeAt": "2017-02-23T21:00:00Z",
+      "availableAt": "2017-02-24T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 734.07,
+      "close": 727.22
+    },
+    {
+      "date": "2017-02-24",
+      "openAt": "2017-02-24T14:30:00Z",
+      "closeAt": "2017-02-24T21:00:00Z",
+      "availableAt": "2017-02-25T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 727.0,
+      "close": 732.75
+    },
+    {
+      "date": "2017-02-27",
+      "openAt": "2017-02-27T14:30:00Z",
+      "closeAt": "2017-02-27T21:00:00Z",
+      "availableAt": "2017-02-28T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 733.76,
+      "close": 740.85
+    },
+    {
+      "date": "2017-02-28",
+      "openAt": "2017-02-28T14:30:00Z",
+      "closeAt": "2017-02-28T21:00:00Z",
+      "availableAt": "2017-03-01T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 732.64,
+      "close": 736.55
+    },
+    {
+      "date": "2017-03-01",
+      "openAt": "2017-03-01T14:30:00Z",
+      "closeAt": "2017-03-01T21:00:00Z",
+      "availableAt": "2017-03-02T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 740.01,
+      "close": 738.97
+    },
+    {
+      "date": "2017-03-02",
+      "openAt": "2017-03-02T14:30:00Z",
+      "closeAt": "2017-03-02T21:00:00Z",
+      "availableAt": "2017-03-03T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 739.85,
+      "close": 733.53
+    },
+    {
+      "date": "2017-03-03",
+      "openAt": "2017-03-03T14:30:00Z",
+      "closeAt": "2017-03-03T21:00:00Z",
+      "availableAt": "2017-03-04T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 731.73,
+      "close": 725.24
+    },
+    {
+      "date": "2017-03-06",
+      "openAt": "2017-03-06T14:30:00Z",
+      "closeAt": "2017-03-06T21:00:00Z",
+      "availableAt": "2017-03-07T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 728.0,
+      "close": 723.91
+    },
+    {
+      "date": "2017-03-07",
+      "openAt": "2017-03-07T14:30:00Z",
+      "closeAt": "2017-03-07T21:00:00Z",
+      "availableAt": "2017-03-08T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 721.86,
+      "close": 712.72
+    },
+    {
+      "date": "2017-03-08",
+      "openAt": "2017-03-08T14:30:00Z",
+      "closeAt": "2017-03-08T21:00:00Z",
+      "availableAt": "2017-03-09T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 711.12,
+      "close": 717.67
+    },
+    {
+      "date": "2017-03-09",
+      "openAt": "2017-03-09T14:30:00Z",
+      "closeAt": "2017-03-09T21:00:00Z",
+      "availableAt": "2017-03-10T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 718.05,
+      "close": 715.93
+    },
+    {
+      "date": "2017-03-10",
+      "openAt": "2017-03-10T14:30:00Z",
+      "closeAt": "2017-03-10T21:00:00Z",
+      "availableAt": "2017-03-11T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 717.57,
+      "close": 717.03
+    },
+    {
+      "date": "2017-03-13",
+      "openAt": "2017-03-13T13:30:00Z",
+      "closeAt": "2017-03-13T20:00:00Z",
+      "availableAt": "2017-03-14T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 716.0,
+      "close": 728.55
+    },
+    {
+      "date": "2017-03-14",
+      "openAt": "2017-03-14T13:30:00Z",
+      "closeAt": "2017-03-14T20:00:00Z",
+      "availableAt": "2017-03-15T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 728.22,
+      "close": 728.99
+    },
+    {
+      "date": "2017-03-15",
+      "openAt": "2017-03-15T13:30:00Z",
+      "closeAt": "2017-03-15T20:00:00Z",
+      "availableAt": "2017-03-16T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 729.15,
+      "close": 716.29
+    },
+    {
+      "date": "2017-03-16",
+      "openAt": "2017-03-16T13:30:00Z",
+      "closeAt": "2017-03-16T20:00:00Z",
+      "availableAt": "2017-03-17T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 713.91,
+      "close": 721.85
+    },
+    {
+      "date": "2017-03-17",
+      "openAt": "2017-03-17T13:30:00Z",
+      "closeAt": "2017-03-17T20:00:00Z",
+      "availableAt": "2017-03-18T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 723.12,
+      "close": 730.77
+    },
+    {
+      "date": "2017-03-20",
+      "openAt": "2017-03-20T13:30:00Z",
+      "closeAt": "2017-03-20T20:00:00Z",
+      "availableAt": "2017-03-21T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 730.26,
+      "close": 729.79
+    },
+    {
+      "date": "2017-03-21",
+      "openAt": "2017-03-21T13:30:00Z",
+      "closeAt": "2017-03-21T20:00:00Z",
+      "availableAt": "2017-03-22T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 731.02,
+      "close": 725.21
+    },
+    {
+      "date": "2017-03-22",
+      "openAt": "2017-03-22T13:30:00Z",
+      "closeAt": "2017-03-22T20:00:00Z",
+      "availableAt": "2017-03-23T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 729.74,
+      "close": 725.35
+    },
+    {
+      "date": "2017-03-23",
+      "openAt": "2017-03-23T13:30:00Z",
+      "closeAt": "2017-03-23T20:00:00Z",
+      "availableAt": "2017-03-24T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 724.18,
+      "close": 725.5
+    },
+    {
+      "date": "2017-03-24",
+      "openAt": "2017-03-24T13:30:00Z",
+      "closeAt": "2017-03-24T20:00:00Z",
+      "availableAt": "2017-03-25T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 725.56,
+      "close": 721.16
+    },
+    {
+      "date": "2017-03-27",
+      "openAt": "2017-03-27T13:30:00Z",
+      "closeAt": "2017-03-27T20:00:00Z",
+      "availableAt": "2017-03-28T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 716.5,
+      "close": 714.16
+    },
+    {
+      "date": "2017-03-28",
+      "openAt": "2017-03-28T13:30:00Z",
+      "closeAt": "2017-03-28T20:00:00Z",
+      "availableAt": "2017-03-29T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 712.51,
+      "close": 716.99
+    },
+    {
+      "date": "2017-03-29",
+      "openAt": "2017-03-29T13:30:00Z",
+      "closeAt": "2017-03-29T20:00:00Z",
+      "availableAt": "2017-03-30T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 717.21,
+      "close": 722.46
+    },
+    {
+      "date": "2017-03-30",
+      "openAt": "2017-03-30T13:30:00Z",
+      "closeAt": "2017-03-30T20:00:00Z",
+      "availableAt": "2017-03-31T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 722.0,
+      "close": 719.08
+    },
+    {
+      "date": "2017-03-31",
+      "openAt": "2017-03-31T13:30:00Z",
+      "closeAt": "2017-03-31T20:00:00Z",
+      "availableAt": "2017-04-01T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 718.28,
+      "close": 723.05
+    },
+    {
+      "date": "2017-04-03",
+      "openAt": "2017-04-03T13:30:00Z",
+      "closeAt": "2017-04-03T20:00:00Z",
+      "availableAt": "2017-04-04T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 720.5,
+      "close": 700.69
+    },
+    {
+      "date": "2017-04-04",
+      "openAt": "2017-04-04T13:30:00Z",
+      "closeAt": "2017-04-04T20:00:00Z",
+      "availableAt": "2017-04-05T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 700.0,
+      "close": 696.67
+    },
+    {
+      "date": "2017-04-05",
+      "openAt": "2017-04-05T13:30:00Z",
+      "closeAt": "2017-04-05T20:00:00Z",
+      "availableAt": "2017-04-06T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 699.0,
+      "close": 703.03
+    },
+    {
+      "date": "2017-04-06",
+      "openAt": "2017-04-06T13:30:00Z",
+      "closeAt": "2017-04-06T20:00:00Z",
+      "availableAt": "2017-04-07T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 705.23,
+      "close": 702.29
+    },
+    {
+      "date": "2017-04-07",
+      "openAt": "2017-04-07T13:30:00Z",
+      "closeAt": "2017-04-07T20:00:00Z",
+      "availableAt": "2017-04-08T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 702.59,
+      "close": 700.44
+    },
+    {
+      "date": "2017-04-10",
+      "openAt": "2017-04-10T13:30:00Z",
+      "closeAt": "2017-04-10T20:00:00Z",
+      "availableAt": "2017-04-11T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 700.52,
+      "close": 703.64
+    },
+    {
+      "date": "2017-04-11",
+      "openAt": "2017-04-11T13:30:00Z",
+      "closeAt": "2017-04-11T20:00:00Z",
+      "availableAt": "2017-04-12T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 702.73,
+      "close": 700.59
+    },
+    {
+      "date": "2017-04-12",
+      "openAt": "2017-04-12T13:30:00Z",
+      "closeAt": "2017-04-12T20:00:00Z",
+      "availableAt": "2017-04-13T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 696.16,
+      "close": 693.34
+    },
+    {
+      "date": "2017-04-13",
+      "openAt": "2017-04-13T13:30:00Z",
+      "closeAt": "2017-04-13T20:00:00Z",
+      "availableAt": "2017-04-14T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 693.68,
+      "close": 688.46
+    },
+    {
+      "date": "2017-04-17",
+      "openAt": "2017-04-17T13:30:00Z",
+      "closeAt": "2017-04-17T20:00:00Z",
+      "availableAt": "2017-04-18T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 692.33,
+      "close": 687.61
+    },
+    {
+      "date": "2017-04-18",
+      "openAt": "2017-04-18T13:30:00Z",
+      "closeAt": "2017-04-18T20:00:00Z",
+      "availableAt": "2017-04-19T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 685.35,
+      "close": 689.07
+    },
+    {
+      "date": "2017-04-19",
+      "openAt": "2017-04-19T13:30:00Z",
+      "closeAt": "2017-04-19T20:00:00Z",
+      "availableAt": "2017-04-20T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 693.33,
+      "close": 697.57
+    },
+    {
+      "date": "2017-04-20",
+      "openAt": "2017-04-20T13:30:00Z",
+      "closeAt": "2017-04-20T20:00:00Z",
+      "availableAt": "2017-04-21T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 699.64,
+      "close": 706.3
+    },
+    {
+      "date": "2017-04-21",
+      "openAt": "2017-04-21T13:30:00Z",
+      "closeAt": "2017-04-21T20:00:00Z",
+      "availableAt": "2017-04-22T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 706.08,
+      "close": 707.79
+    },
+    {
+      "date": "2017-04-24",
+      "openAt": "2017-04-24T13:30:00Z",
+      "closeAt": "2017-04-24T20:00:00Z",
+      "availableAt": "2017-04-25T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 713.23,
+      "close": 722.45
+    },
+    {
+      "date": "2017-04-25",
+      "openAt": "2017-04-25T13:30:00Z",
+      "closeAt": "2017-04-25T20:00:00Z",
+      "availableAt": "2017-04-26T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 723.99,
+      "close": 712.06
+    },
+    {
+      "date": "2017-04-26",
+      "openAt": "2017-04-26T13:30:00Z",
+      "closeAt": "2017-04-26T20:00:00Z",
+      "availableAt": "2017-04-27T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 713.82,
+      "close": 715.12
+    },
+    {
+      "date": "2017-04-27",
+      "openAt": "2017-04-27T13:30:00Z",
+      "closeAt": "2017-04-27T20:00:00Z",
+      "availableAt": "2017-04-28T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 713.87,
+      "close": 703.9
+    },
+    {
+      "date": "2017-04-28",
+      "openAt": "2017-04-28T13:30:00Z",
+      "closeAt": "2017-04-28T20:00:00Z",
+      "availableAt": "2017-04-29T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 700.51,
+      "close": 692.19
+    },
+    {
+      "date": "2017-05-01",
+      "openAt": "2017-05-01T13:30:00Z",
+      "closeAt": "2017-05-01T20:00:00Z",
+      "availableAt": "2017-05-02T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 696.4,
+      "close": 682.99
+    },
+    {
+      "date": "2017-05-02",
+      "openAt": "2017-05-02T13:30:00Z",
+      "closeAt": "2017-05-02T20:00:00Z",
+      "availableAt": "2017-05-03T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 683.27,
+      "close": 688.94
+    },
+    {
+      "date": "2017-05-03",
+      "openAt": "2017-05-03T13:30:00Z",
+      "closeAt": "2017-05-03T20:00:00Z",
+      "availableAt": "2017-05-04T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 689.32,
+      "close": 697.18
+    },
+    {
+      "date": "2017-05-04",
+      "openAt": "2017-05-04T13:30:00Z",
+      "closeAt": "2017-05-04T20:00:00Z",
+      "availableAt": "2017-05-05T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 696.4,
+      "close": 704.58
+    },
+    {
+      "date": "2017-05-05",
+      "openAt": "2017-05-05T13:30:00Z",
+      "closeAt": "2017-05-05T20:00:00Z",
+      "availableAt": "2017-05-06T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 705.42,
+      "close": 705.31
+    },
+    {
+      "date": "2017-05-08",
+      "openAt": "2017-05-08T13:30:00Z",
+      "closeAt": "2017-05-08T20:00:00Z",
+      "availableAt": "2017-05-09T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 703.27,
+      "close": 709.98
+    },
+    {
+      "date": "2017-05-09",
+      "openAt": "2017-05-09T13:30:00Z",
+      "closeAt": "2017-05-09T20:00:00Z",
+      "availableAt": "2017-05-10T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 711.7,
+      "close": 707.05
+    },
+    {
+      "date": "2017-05-10",
+      "openAt": "2017-05-10T13:30:00Z",
+      "closeAt": "2017-05-10T20:00:00Z",
+      "availableAt": "2017-05-11T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 703.56,
+      "close": 698.03
+    },
+    {
+      "date": "2017-05-11",
+      "openAt": "2017-05-11T13:30:00Z",
+      "closeAt": "2017-05-11T20:00:00Z",
+      "availableAt": "2017-05-12T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 691.0,
+      "close": 693.85
+    },
+    {
+      "date": "2017-05-12",
+      "openAt": "2017-05-12T13:30:00Z",
+      "closeAt": "2017-05-12T20:00:00Z",
+      "availableAt": "2017-05-13T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 689.98,
+      "close": 680.72
+    },
+    {
+      "date": "2017-05-15",
+      "openAt": "2017-05-15T13:30:00Z",
+      "closeAt": "2017-05-15T20:00:00Z",
+      "availableAt": "2017-05-16T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 681.16,
+      "close": 681.01
+    },
+    {
+      "date": "2017-05-16",
+      "openAt": "2017-05-16T13:30:00Z",
+      "closeAt": "2017-05-16T20:00:00Z",
+      "availableAt": "2017-05-17T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 680.04,
+      "close": 669.83
+    },
+    {
+      "date": "2017-05-17",
+      "openAt": "2017-05-17T13:30:00Z",
+      "closeAt": "2017-05-17T20:00:00Z",
+      "availableAt": "2017-05-18T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 666.31,
+      "close": 664.05
+    },
+    {
+      "date": "2017-05-18",
+      "openAt": "2017-05-18T13:30:00Z",
+      "closeAt": "2017-05-18T20:00:00Z",
+      "availableAt": "2017-05-19T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 665.07,
+      "close": 673.79
+    },
+    {
+      "date": "2017-05-19",
+      "openAt": "2017-05-19T13:30:00Z",
+      "closeAt": "2017-05-19T20:00:00Z",
+      "availableAt": "2017-05-20T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 675.32,
+      "close": 673.65
+    },
+    {
+      "date": "2017-05-22",
+      "openAt": "2017-05-22T13:30:00Z",
+      "closeAt": "2017-05-22T20:00:00Z",
+      "availableAt": "2017-05-23T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 671.0,
+      "close": 659.49
+    },
+    {
+      "date": "2017-05-23",
+      "openAt": "2017-05-23T13:30:00Z",
+      "closeAt": "2017-05-23T20:00:00Z",
+      "availableAt": "2017-05-24T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 607.01,
+      "close": 581.4
+    },
+    {
+      "date": "2017-05-24",
+      "openAt": "2017-05-24T13:30:00Z",
+      "closeAt": "2017-05-24T20:00:00Z",
+      "availableAt": "2017-05-25T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 581.18,
+      "close": 590.99
+    },
+    {
+      "date": "2017-05-25",
+      "openAt": "2017-05-25T13:30:00Z",
+      "closeAt": "2017-05-25T20:00:00Z",
+      "availableAt": "2017-05-26T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 594.97,
+      "close": 607.34
+    },
+    {
+      "date": "2017-05-26",
+      "openAt": "2017-05-26T13:30:00Z",
+      "closeAt": "2017-05-26T20:00:00Z",
+      "availableAt": "2017-05-27T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 605.0,
+      "close": 615.62
+    },
+    {
+      "date": "2017-05-30",
+      "openAt": "2017-05-30T13:30:00Z",
+      "closeAt": "2017-05-30T20:00:00Z",
+      "availableAt": "2017-05-31T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 621.8,
+      "close": 612.98
+    },
+    {
+      "date": "2017-05-31",
+      "openAt": "2017-05-31T13:30:00Z",
+      "closeAt": "2017-05-31T20:00:00Z",
+      "availableAt": "2017-06-01T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 613.83,
+      "close": 605.92
+    },
+    {
+      "date": "2017-06-01",
+      "openAt": "2017-06-01T13:30:00Z",
+      "closeAt": "2017-06-01T20:00:00Z",
+      "availableAt": "2017-06-02T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 606.11,
+      "close": 623.98
+    },
+    {
+      "date": "2017-06-02",
+      "openAt": "2017-06-02T13:30:00Z",
+      "closeAt": "2017-06-02T20:00:00Z",
+      "availableAt": "2017-06-03T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 622.9,
+      "close": 621.7
+    },
+    {
+      "date": "2017-06-05",
+      "openAt": "2017-06-05T13:30:00Z",
+      "closeAt": "2017-06-05T20:00:00Z",
+      "availableAt": "2017-06-06T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 619.18,
+      "close": 617.07
+    },
+    {
+      "date": "2017-06-06",
+      "openAt": "2017-06-06T13:30:00Z",
+      "closeAt": "2017-06-06T20:00:00Z",
+      "availableAt": "2017-06-07T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 617.09,
+      "close": 603.88
+    },
+    {
+      "date": "2017-06-07",
+      "openAt": "2017-06-07T13:30:00Z",
+      "closeAt": "2017-06-07T20:00:00Z",
+      "availableAt": "2017-06-08T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 604.89,
+      "close": 606.77
+    },
+    {
+      "date": "2017-06-08",
+      "openAt": "2017-06-08T13:30:00Z",
+      "closeAt": "2017-06-08T20:00:00Z",
+      "availableAt": "2017-06-09T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 607.41,
+      "close": 598.96
+    },
+    {
+      "date": "2017-06-09",
+      "openAt": "2017-06-09T13:30:00Z",
+      "closeAt": "2017-06-09T20:00:00Z",
+      "availableAt": "2017-06-10T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 598.91,
+      "close": 606.36
+    },
+    {
+      "date": "2017-06-12",
+      "openAt": "2017-06-12T13:30:00Z",
+      "closeAt": "2017-06-12T20:00:00Z",
+      "availableAt": "2017-06-13T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 606.52,
+      "close": 612.02
+    },
+    {
+      "date": "2017-06-13",
+      "openAt": "2017-06-13T13:30:00Z",
+      "closeAt": "2017-06-13T20:00:00Z",
+      "availableAt": "2017-06-14T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 613.3,
+      "close": 612.08
+    },
+    {
+      "date": "2017-06-14",
+      "openAt": "2017-06-14T13:30:00Z",
+      "closeAt": "2017-06-14T20:00:00Z",
+      "availableAt": "2017-06-15T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 610.26,
+      "close": 608.38
+    },
+    {
+      "date": "2017-06-15",
+      "openAt": "2017-06-15T13:30:00Z",
+      "closeAt": "2017-06-15T20:00:00Z",
+      "availableAt": "2017-06-16T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 603.95,
+      "close": 613.01
+    },
+    {
+      "date": "2017-06-16",
+      "openAt": "2017-06-16T13:30:00Z",
+      "closeAt": "2017-06-16T20:00:00Z",
+      "availableAt": "2017-06-17T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 609.73,
+      "close": 593.81
+    },
+    {
+      "date": "2017-06-19",
+      "openAt": "2017-06-19T13:30:00Z",
+      "closeAt": "2017-06-19T20:00:00Z",
+      "availableAt": "2017-06-20T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 597.53,
+      "close": 596.86
+    },
+    {
+      "date": "2017-06-20",
+      "openAt": "2017-06-20T13:30:00Z",
+      "closeAt": "2017-06-20T20:00:00Z",
+      "availableAt": "2017-06-21T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 590.89,
+      "close": 585.2
+    },
+    {
+      "date": "2017-06-21",
+      "openAt": "2017-06-21T13:30:00Z",
+      "closeAt": "2017-06-21T20:00:00Z",
+      "availableAt": "2017-06-22T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 585.5,
+      "close": 574.01
+    },
+    {
+      "date": "2017-06-22",
+      "openAt": "2017-06-22T13:30:00Z",
+      "closeAt": "2017-06-22T20:00:00Z",
+      "availableAt": "2017-06-23T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 572.55,
+      "close": 579.63
+    },
+    {
+      "date": "2017-06-23",
+      "openAt": "2017-06-23T13:30:00Z",
+      "closeAt": "2017-06-23T20:00:00Z",
+      "availableAt": "2017-06-24T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 579.5,
+      "close": 574.98
+    },
+    {
+      "date": "2017-06-26",
+      "openAt": "2017-06-26T13:30:00Z",
+      "closeAt": "2017-06-26T20:00:00Z",
+      "availableAt": "2017-06-27T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 575.94,
+      "close": 579.61
+    },
+    {
+      "date": "2017-06-27",
+      "openAt": "2017-06-27T13:30:00Z",
+      "closeAt": "2017-06-27T20:00:00Z",
+      "availableAt": "2017-06-28T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 577.54,
+      "close": 578.77
+    },
+    {
+      "date": "2017-06-28",
+      "openAt": "2017-06-28T13:30:00Z",
+      "closeAt": "2017-06-28T20:00:00Z",
+      "availableAt": "2017-06-29T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 576.12,
+      "close": 569.02
+    },
+    {
+      "date": "2017-06-29",
+      "openAt": "2017-06-29T13:30:00Z",
+      "closeAt": "2017-06-29T20:00:00Z",
+      "availableAt": "2017-06-30T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 571.44,
+      "close": 559.67
+    },
+    {
+      "date": "2017-06-30",
+      "openAt": "2017-06-30T13:30:00Z",
+      "closeAt": "2017-06-30T20:00:00Z",
+      "availableAt": "2017-07-01T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 562.53,
+      "close": 570.46
+    },
+    {
+      "date": "2017-07-03",
+      "openAt": "2017-07-03T13:30:00Z",
+      "closeAt": "2017-07-03T17:00:00Z",
+      "availableAt": "2017-07-04T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 570.85,
+      "close": 571.71
+    },
+    {
+      "date": "2017-07-05",
+      "openAt": "2017-07-05T13:30:00Z",
+      "closeAt": "2017-07-05T20:00:00Z",
+      "availableAt": "2017-07-06T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 530.3,
+      "close": 516.83
+    },
+    {
+      "date": "2017-07-06",
+      "openAt": "2017-07-06T13:30:00Z",
+      "closeAt": "2017-07-06T20:00:00Z",
+      "availableAt": "2017-07-07T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 514.01,
+      "close": 507.48
+    },
+    {
+      "date": "2017-07-07",
+      "openAt": "2017-07-07T13:30:00Z",
+      "closeAt": "2017-07-07T20:00:00Z",
+      "availableAt": "2017-07-08T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 503.0,
+      "close": 501.39
+    },
+    {
+      "date": "2017-07-10",
+      "openAt": "2017-07-10T13:30:00Z",
+      "closeAt": "2017-07-10T20:00:00Z",
+      "availableAt": "2017-07-11T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 503.0,
+      "close": 507.54
+    },
+    {
+      "date": "2017-07-11",
+      "openAt": "2017-07-11T13:30:00Z",
+      "closeAt": "2017-07-11T20:00:00Z",
+      "availableAt": "2017-07-12T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 508.0,
+      "close": 499.57
+    },
+    {
+      "date": "2017-07-12",
+      "openAt": "2017-07-12T13:30:00Z",
+      "closeAt": "2017-07-12T20:00:00Z",
+      "availableAt": "2017-07-13T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 501.97,
+      "close": 493.15
+    },
+    {
+      "date": "2017-07-13",
+      "openAt": "2017-07-13T13:30:00Z",
+      "closeAt": "2017-07-13T20:00:00Z",
+      "availableAt": "2017-07-14T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 492.96,
+      "close": 506.81
+    },
+    {
+      "date": "2017-07-14",
+      "openAt": "2017-07-14T13:30:00Z",
+      "closeAt": "2017-07-14T20:00:00Z",
+      "availableAt": "2017-07-15T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 507.53,
+      "close": 506.31
+    },
+    {
+      "date": "2017-07-17",
+      "openAt": "2017-07-17T13:30:00Z",
+      "closeAt": "2017-07-17T20:00:00Z",
+      "availableAt": "2017-07-18T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 502.89,
+      "close": 503.66
+    },
+    {
+      "date": "2017-07-18",
+      "openAt": "2017-07-18T13:30:00Z",
+      "closeAt": "2017-07-18T20:00:00Z",
+      "availableAt": "2017-07-19T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 504.01,
+      "close": 495.69
+    },
+    {
+      "date": "2017-07-19",
+      "openAt": "2017-07-19T13:30:00Z",
+      "closeAt": "2017-07-19T20:00:00Z",
+      "availableAt": "2017-07-20T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 497.08,
+      "close": 493.44
+    },
+    {
+      "date": "2017-07-20",
+      "openAt": "2017-07-20T13:30:00Z",
+      "closeAt": "2017-07-20T20:00:00Z",
+      "availableAt": "2017-07-21T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 495.5,
+      "close": 502.56
+    },
+    {
+      "date": "2017-07-21",
+      "openAt": "2017-07-21T13:30:00Z",
+      "closeAt": "2017-07-21T20:00:00Z",
+      "availableAt": "2017-07-22T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 499.2,
+      "close": 511.46
+    },
+    {
+      "date": "2017-07-24",
+      "openAt": "2017-07-24T13:30:00Z",
+      "closeAt": "2017-07-24T20:00:00Z",
+      "availableAt": "2017-07-25T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 509.46,
+      "close": 498.25
+    },
+    {
+      "date": "2017-07-25",
+      "openAt": "2017-07-25T13:30:00Z",
+      "closeAt": "2017-07-25T20:00:00Z",
+      "availableAt": "2017-07-26T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 501.47,
+      "close": 511.01
+    },
+    {
+      "date": "2017-07-26",
+      "openAt": "2017-07-26T13:30:00Z",
+      "closeAt": "2017-07-26T20:00:00Z",
+      "availableAt": "2017-07-27T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 511.34,
+      "close": 515.97
+    },
+    {
+      "date": "2017-07-27",
+      "openAt": "2017-07-27T13:30:00Z",
+      "closeAt": "2017-07-27T20:00:00Z",
+      "availableAt": "2017-07-28T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 520.02,
+      "close": 529.01
+    },
+    {
+      "date": "2017-07-28",
+      "openAt": "2017-07-28T13:30:00Z",
+      "closeAt": "2017-07-28T20:00:00Z",
+      "availableAt": "2017-07-29T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 529.4,
+      "close": 526.92
+    },
+    {
+      "date": "2017-07-31",
+      "openAt": "2017-07-31T13:30:00Z",
+      "closeAt": "2017-07-31T20:00:00Z",
+      "availableAt": "2017-08-01T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 528.05,
+      "close": 539.82
+    },
+    {
+      "date": "2017-08-01",
+      "openAt": "2017-08-01T13:30:00Z",
+      "closeAt": "2017-08-01T20:00:00Z",
+      "availableAt": "2017-08-02T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 542.62,
+      "close": 547.86
+    },
+    {
+      "date": "2017-08-02",
+      "openAt": "2017-08-02T13:30:00Z",
+      "closeAt": "2017-08-02T20:00:00Z",
+      "availableAt": "2017-08-03T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 545.57,
+      "close": 542.89
+    },
+    {
+      "date": "2017-08-03",
+      "openAt": "2017-08-03T13:30:00Z",
+      "closeAt": "2017-08-03T20:00:00Z",
+      "availableAt": "2017-08-04T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 540.55,
+      "close": 529.29
+    },
+    {
+      "date": "2017-08-04",
+      "openAt": "2017-08-04T13:30:00Z",
+      "closeAt": "2017-08-04T20:00:00Z",
+      "availableAt": "2017-08-05T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 530.0,
+      "close": 536.82
+    },
+    {
+      "date": "2017-08-07",
+      "openAt": "2017-08-07T13:30:00Z",
+      "closeAt": "2017-08-07T20:00:00Z",
+      "availableAt": "2017-08-08T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 537.79,
+      "close": 541.66
+    },
+    {
+      "date": "2017-08-08",
+      "openAt": "2017-08-08T13:30:00Z",
+      "closeAt": "2017-08-08T20:00:00Z",
+      "availableAt": "2017-08-09T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 547.58,
+      "close": 530.97
+    },
+    {
+      "date": "2017-08-09",
+      "openAt": "2017-08-09T13:30:00Z",
+      "closeAt": "2017-08-09T20:00:00Z",
+      "availableAt": "2017-08-10T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 526.73,
+      "close": 533.16
+    },
+    {
+      "date": "2017-08-10",
+      "openAt": "2017-08-10T13:30:00Z",
+      "closeAt": "2017-08-10T20:00:00Z",
+      "availableAt": "2017-08-11T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 530.83,
+      "close": 525.52
+    },
+    {
+      "date": "2017-08-11",
+      "openAt": "2017-08-11T13:30:00Z",
+      "closeAt": "2017-08-11T20:00:00Z",
+      "availableAt": "2017-08-12T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 525.0,
+      "close": 533.94
+    },
+    {
+      "date": "2017-08-14",
+      "openAt": "2017-08-14T13:30:00Z",
+      "closeAt": "2017-08-14T20:00:00Z",
+      "availableAt": "2017-08-15T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 537.54,
+      "close": 525.32
+    },
+    {
+      "date": "2017-08-15",
+      "openAt": "2017-08-15T13:30:00Z",
+      "closeAt": "2017-08-15T20:00:00Z",
+      "availableAt": "2017-08-16T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 501.54,
+      "close": 516.13
+    },
+    {
+      "date": "2017-08-16",
+      "openAt": "2017-08-16T13:30:00Z",
+      "closeAt": "2017-08-16T20:00:00Z",
+      "availableAt": "2017-08-17T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 520.0,
+      "close": 524.59
+    },
+    {
+      "date": "2017-08-17",
+      "openAt": "2017-08-17T13:30:00Z",
+      "closeAt": "2017-08-17T20:00:00Z",
+      "availableAt": "2017-08-18T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 524.96,
+      "close": 515.56
+    },
+    {
+      "date": "2017-08-18",
+      "openAt": "2017-08-18T13:30:00Z",
+      "closeAt": "2017-08-18T20:00:00Z",
+      "availableAt": "2017-08-19T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 513.2,
+      "close": 510.19
+    },
+    {
+      "date": "2017-08-21",
+      "openAt": "2017-08-21T13:30:00Z",
+      "closeAt": "2017-08-21T20:00:00Z",
+      "availableAt": "2017-08-22T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 510.63,
+      "close": 517.51
+    },
+    {
+      "date": "2017-08-22",
+      "openAt": "2017-08-22T13:30:00Z",
+      "closeAt": "2017-08-22T20:00:00Z",
+      "availableAt": "2017-08-23T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 519.14,
+      "close": 519.13
+    },
+    {
+      "date": "2017-08-23",
+      "openAt": "2017-08-23T13:30:00Z",
+      "closeAt": "2017-08-23T20:00:00Z",
+      "availableAt": "2017-08-24T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 517.57,
+      "close": 513.34
+    },
+    {
+      "date": "2017-08-24",
+      "openAt": "2017-08-24T13:30:00Z",
+      "closeAt": "2017-08-24T20:00:00Z",
+      "availableAt": "2017-08-25T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 513.67,
+      "close": 511.63
+    },
+    {
+      "date": "2017-08-25",
+      "openAt": "2017-08-25T13:30:00Z",
+      "closeAt": "2017-08-25T20:00:00Z",
+      "availableAt": "2017-08-26T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 515.62,
+      "close": 528.95
+    },
+    {
+      "date": "2017-08-28",
+      "openAt": "2017-08-28T13:30:00Z",
+      "closeAt": "2017-08-28T20:00:00Z",
+      "availableAt": "2017-08-29T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 529.75,
+      "close": 525.4
+    },
+    {
+      "date": "2017-08-29",
+      "openAt": "2017-08-29T13:30:00Z",
+      "closeAt": "2017-08-29T20:00:00Z",
+      "availableAt": "2017-08-30T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 520.68,
+      "close": 522.38
+    },
+    {
+      "date": "2017-08-30",
+      "openAt": "2017-08-30T13:30:00Z",
+      "closeAt": "2017-08-30T20:00:00Z",
+      "availableAt": "2017-08-31T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 522.49,
+      "close": 529.53
+    },
+    {
+      "date": "2017-08-31",
+      "openAt": "2017-08-31T13:30:00Z",
+      "closeAt": "2017-08-31T20:00:00Z",
+      "availableAt": "2017-09-01T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 529.66,
+      "close": 528.44
+    },
+    {
+      "date": "2017-09-01",
+      "openAt": "2017-09-01T13:30:00Z",
+      "closeAt": "2017-09-01T20:00:00Z",
+      "availableAt": "2017-09-02T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 531.2,
+      "close": 538.77
+    },
+    {
+      "date": "2017-09-05",
+      "openAt": "2017-09-05T13:30:00Z",
+      "closeAt": "2017-09-05T20:00:00Z",
+      "availableAt": "2017-09-06T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 541.36,
+      "close": 540.0
+    },
+    {
+      "date": "2017-09-06",
+      "openAt": "2017-09-06T13:30:00Z",
+      "closeAt": "2017-09-06T20:00:00Z",
+      "availableAt": "2017-09-07T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 543.57,
+      "close": 540.65
+    },
+    {
+      "date": "2017-09-07",
+      "openAt": "2017-09-07T13:30:00Z",
+      "closeAt": "2017-09-07T20:00:00Z",
+      "availableAt": "2017-09-08T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 540.5,
+      "close": 541.16
+    },
+    {
+      "date": "2017-09-08",
+      "openAt": "2017-09-08T13:30:00Z",
+      "closeAt": "2017-09-08T20:00:00Z",
+      "availableAt": "2017-09-09T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 541.23,
+      "close": 540.51
+    },
+    {
+      "date": "2017-09-11",
+      "openAt": "2017-09-11T13:30:00Z",
+      "closeAt": "2017-09-11T20:00:00Z",
+      "availableAt": "2017-09-12T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 542.49,
+      "close": 540.32
+    },
+    {
+      "date": "2017-09-12",
+      "openAt": "2017-09-12T13:30:00Z",
+      "closeAt": "2017-09-12T20:00:00Z",
+      "availableAt": "2017-09-13T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 538.47,
+      "close": 551.55
+    },
+    {
+      "date": "2017-09-13",
+      "openAt": "2017-09-13T13:30:00Z",
+      "closeAt": "2017-09-13T20:00:00Z",
+      "availableAt": "2017-09-14T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 551.25,
+      "close": 569.34
+    },
+    {
+      "date": "2017-09-14",
+      "openAt": "2017-09-14T13:30:00Z",
+      "closeAt": "2017-09-14T20:00:00Z",
+      "availableAt": "2017-09-15T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 570.0,
+      "close": 563.56
+    },
+    {
+      "date": "2017-09-15",
+      "openAt": "2017-09-15T13:30:00Z",
+      "closeAt": "2017-09-15T20:00:00Z",
+      "availableAt": "2017-09-16T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 564.98,
+      "close": 569.89
+    },
+    {
+      "date": "2017-09-18",
+      "openAt": "2017-09-18T13:30:00Z",
+      "closeAt": "2017-09-18T20:00:00Z",
+      "availableAt": "2017-09-19T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 571.46,
+      "close": 563.4
+    },
+    {
+      "date": "2017-09-19",
+      "openAt": "2017-09-19T13:30:00Z",
+      "closeAt": "2017-09-19T20:00:00Z",
+      "availableAt": "2017-09-20T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 567.0,
+      "close": 535.19
+    },
+    {
+      "date": "2017-09-20",
+      "openAt": "2017-09-20T13:30:00Z",
+      "closeAt": "2017-09-20T20:00:00Z",
+      "availableAt": "2017-09-21T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 533.77,
+      "close": 543.58
+    },
+    {
+      "date": "2017-09-21",
+      "openAt": "2017-09-21T13:30:00Z",
+      "closeAt": "2017-09-21T20:00:00Z",
+      "availableAt": "2017-09-22T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 542.4,
+      "close": 553.49
+    },
+    {
+      "date": "2017-09-22",
+      "openAt": "2017-09-22T13:30:00Z",
+      "closeAt": "2017-09-22T20:00:00Z",
+      "availableAt": "2017-09-23T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 553.49,
+      "close": 574.03
+    },
+    {
+      "date": "2017-09-25",
+      "openAt": "2017-09-25T13:30:00Z",
+      "closeAt": "2017-09-25T20:00:00Z",
+      "availableAt": "2017-09-26T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 574.69,
+      "close": 583.48
+    },
+    {
+      "date": "2017-09-26",
+      "openAt": "2017-09-26T13:30:00Z",
+      "closeAt": "2017-09-26T20:00:00Z",
+      "availableAt": "2017-09-27T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 585.87,
+      "close": 587.13
+    },
+    {
+      "date": "2017-09-27",
+      "openAt": "2017-09-27T13:30:00Z",
+      "closeAt": "2017-09-27T20:00:00Z",
+      "availableAt": "2017-09-28T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 588.87,
+      "close": 588.28
+    },
+    {
+      "date": "2017-09-28",
+      "openAt": "2017-09-28T13:30:00Z",
+      "closeAt": "2017-09-28T20:00:00Z",
+      "availableAt": "2017-09-29T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 583.05,
+      "close": 587.29
+    },
+    {
+      "date": "2017-09-29",
+      "openAt": "2017-09-29T13:30:00Z",
+      "closeAt": "2017-09-29T20:00:00Z",
+      "availableAt": "2017-09-30T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 588.77,
+      "close": 595.11
+    },
+    {
+      "date": "2017-10-02",
+      "openAt": "2017-10-02T13:30:00Z",
+      "closeAt": "2017-10-02T20:00:00Z",
+      "availableAt": "2017-10-03T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 595.65,
+      "close": 597.62
+    },
+    {
+      "date": "2017-10-03",
+      "openAt": "2017-10-03T13:30:00Z",
+      "closeAt": "2017-10-03T20:00:00Z",
+      "availableAt": "2017-10-04T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 599.53,
+      "close": 599.55
+    },
+    {
+      "date": "2017-10-04",
+      "openAt": "2017-10-04T13:30:00Z",
+      "closeAt": "2017-10-04T20:00:00Z",
+      "availableAt": "2017-10-05T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 599.95,
+      "close": 595.24
+    },
+    {
+      "date": "2017-10-05",
+      "openAt": "2017-10-05T13:30:00Z",
+      "closeAt": "2017-10-05T20:00:00Z",
+      "availableAt": "2017-10-06T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 591.16,
+      "close": 599.83
+    },
+    {
+      "date": "2017-10-06",
+      "openAt": "2017-10-06T13:30:00Z",
+      "closeAt": "2017-10-06T20:00:00Z",
+      "availableAt": "2017-10-07T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 599.82,
+      "close": 601.49
+    },
+    {
+      "date": "2017-10-09",
+      "openAt": "2017-10-09T13:30:00Z",
+      "closeAt": "2017-10-09T20:00:00Z",
+      "availableAt": "2017-10-10T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 601.04,
+      "close": 592.04
+    },
+    {
+      "date": "2017-10-10",
+      "openAt": "2017-10-10T13:30:00Z",
+      "closeAt": "2017-10-10T20:00:00Z",
+      "availableAt": "2017-10-11T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 592.01,
+      "close": 587.57
+    },
+    {
+      "date": "2017-10-11",
+      "openAt": "2017-10-11T13:30:00Z",
+      "closeAt": "2017-10-11T20:00:00Z",
+      "availableAt": "2017-10-12T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 587.55,
+      "close": 588.56
+    },
+    {
+      "date": "2017-10-12",
+      "openAt": "2017-10-12T13:30:00Z",
+      "closeAt": "2017-10-12T20:00:00Z",
+      "availableAt": "2017-10-13T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 587.69,
+      "close": 589.75
+    },
+    {
+      "date": "2017-10-13",
+      "openAt": "2017-10-13T13:30:00Z",
+      "closeAt": "2017-10-13T20:00:00Z",
+      "availableAt": "2017-10-14T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 590.09,
+      "close": 599.16
+    },
+    {
+      "date": "2017-10-16",
+      "openAt": "2017-10-16T13:30:00Z",
+      "closeAt": "2017-10-16T20:00:00Z",
+      "availableAt": "2017-10-17T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 599.3,
+      "close": 598.55
+    },
+    {
+      "date": "2017-10-17",
+      "openAt": "2017-10-17T13:30:00Z",
+      "closeAt": "2017-10-17T20:00:00Z",
+      "availableAt": "2017-10-18T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 600.0,
+      "close": 607.87
+    },
+    {
+      "date": "2017-10-18",
+      "openAt": "2017-10-18T13:30:00Z",
+      "closeAt": "2017-10-18T20:00:00Z",
+      "availableAt": "2017-10-19T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 608.8,
+      "close": 606.31
+    },
+    {
+      "date": "2017-10-19",
+      "openAt": "2017-10-19T13:30:00Z",
+      "closeAt": "2017-10-19T20:00:00Z",
+      "availableAt": "2017-10-20T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 602.0,
+      "close": 595.27
+    },
+    {
+      "date": "2017-10-20",
+      "openAt": "2017-10-20T13:30:00Z",
+      "closeAt": "2017-10-20T20:00:00Z",
+      "availableAt": "2017-10-21T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 597.68,
+      "close": 590.06
+    },
+    {
+      "date": "2017-10-23",
+      "openAt": "2017-10-23T13:30:00Z",
+      "closeAt": "2017-10-23T20:00:00Z",
+      "availableAt": "2017-10-24T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 592.46,
+      "close": 589.0
+    },
+    {
+      "date": "2017-10-24",
+      "openAt": "2017-10-24T13:30:00Z",
+      "closeAt": "2017-10-24T20:00:00Z",
+      "availableAt": "2017-10-25T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 587.97,
+      "close": 585.83
+    },
+    {
+      "date": "2017-10-25",
+      "openAt": "2017-10-25T13:30:00Z",
+      "closeAt": "2017-10-25T20:00:00Z",
+      "availableAt": "2017-10-26T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 586.05,
+      "close": 587.84
+    },
+    {
+      "date": "2017-10-26",
+      "openAt": "2017-10-26T13:30:00Z",
+      "closeAt": "2017-10-26T20:00:00Z",
+      "availableAt": "2017-10-27T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 575.8,
+      "close": 590.89
+    },
+    {
+      "date": "2017-10-27",
+      "openAt": "2017-10-27T13:30:00Z",
+      "closeAt": "2017-10-27T20:00:00Z",
+      "availableAt": "2017-10-28T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 589.37,
+      "close": 583.17
+    },
+    {
+      "date": "2017-10-30",
+      "openAt": "2017-10-30T13:30:00Z",
+      "closeAt": "2017-10-30T20:00:00Z",
+      "availableAt": "2017-10-31T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 583.27,
+      "close": 590.15
+    },
+    {
+      "date": "2017-10-31",
+      "openAt": "2017-10-31T13:30:00Z",
+      "closeAt": "2017-10-31T20:00:00Z",
+      "availableAt": "2017-11-01T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 591.25,
+      "close": 589.5
+    },
+    {
+      "date": "2017-11-01",
+      "openAt": "2017-11-01T13:30:00Z",
+      "closeAt": "2017-11-01T20:00:00Z",
+      "availableAt": "2017-11-02T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 592.94,
+      "close": 584.88
+    },
+    {
+      "date": "2017-11-02",
+      "openAt": "2017-11-02T13:30:00Z",
+      "closeAt": "2017-11-02T20:00:00Z",
+      "availableAt": "2017-11-03T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 583.52,
+      "close": 602.7
+    },
+    {
+      "date": "2017-11-03",
+      "openAt": "2017-11-03T13:30:00Z",
+      "closeAt": "2017-11-03T20:00:00Z",
+      "availableAt": "2017-11-04T01:15:00Z",
+      "sourceId": "wiki",
+      "open": 601.12,
+      "close": 606.41
+    },
+    {
+      "date": "2017-11-06",
+      "openAt": "2017-11-06T14:30:00Z",
+      "closeAt": "2017-11-06T21:00:00Z",
+      "availableAt": "2017-11-07T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 605.91,
+      "close": 607.0
+    },
+    {
+      "date": "2017-11-07",
+      "openAt": "2017-11-07T14:30:00Z",
+      "closeAt": "2017-11-07T21:00:00Z",
+      "availableAt": "2017-11-08T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 606.2,
+      "close": 603.56
+    },
+    {
+      "date": "2017-11-09",
+      "openAt": "2017-11-09T14:30:00Z",
+      "closeAt": "2017-11-09T21:00:00Z",
+      "availableAt": "2017-11-10T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 595.92,
+      "close": 605.97
+    },
+    {
+      "date": "2017-11-10",
+      "openAt": "2017-11-10T14:30:00Z",
+      "closeAt": "2017-11-10T21:00:00Z",
+      "availableAt": "2017-11-11T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 604.22,
+      "close": 598.06
+    },
+    {
+      "date": "2017-11-13",
+      "openAt": "2017-11-13T14:30:00Z",
+      "closeAt": "2017-11-13T21:00:00Z",
+      "availableAt": "2017-11-14T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 598.18,
+      "close": 595.26
+    },
+    {
+      "date": "2017-11-14",
+      "openAt": "2017-11-14T14:30:00Z",
+      "closeAt": "2017-11-14T21:00:00Z",
+      "availableAt": "2017-11-15T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 602.15,
+      "close": 607.63
+    },
+    {
+      "date": "2017-11-15",
+      "openAt": "2017-11-15T14:30:00Z",
+      "closeAt": "2017-11-15T21:00:00Z",
+      "availableAt": "2017-11-16T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 601.33,
+      "close": 609.14
+    },
+    {
+      "date": "2017-11-16",
+      "openAt": "2017-11-16T14:30:00Z",
+      "closeAt": "2017-11-16T21:00:00Z",
+      "availableAt": "2017-11-17T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 609.24,
+      "close": 618.59
+    },
+    {
+      "date": "2017-11-17",
+      "openAt": "2017-11-17T14:30:00Z",
+      "closeAt": "2017-11-17T21:00:00Z",
+      "availableAt": "2017-11-18T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 622.28,
+      "close": 629.43
+    },
+    {
+      "date": "2017-11-20",
+      "openAt": "2017-11-20T14:30:00Z",
+      "closeAt": "2017-11-20T21:00:00Z",
+      "availableAt": "2017-11-21T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 628.78,
+      "close": 634.65
+    },
+    {
+      "date": "2017-11-21",
+      "openAt": "2017-11-21T14:30:00Z",
+      "closeAt": "2017-11-21T21:00:00Z",
+      "availableAt": "2017-11-22T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 633.48,
+      "close": 632.4
+    },
+    {
+      "date": "2017-11-22",
+      "openAt": "2017-11-22T14:30:00Z",
+      "closeAt": "2017-11-22T21:00:00Z",
+      "availableAt": "2017-11-23T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 633.0,
+      "close": 638.24
+    },
+    {
+      "date": "2017-11-24",
+      "openAt": "2017-11-24T14:30:00Z",
+      "closeAt": "2017-11-24T18:00:00Z",
+      "availableAt": "2017-11-25T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 641.92,
+      "close": 632.98
+    },
+    {
+      "date": "2017-11-27",
+      "openAt": "2017-11-27T14:30:00Z",
+      "closeAt": "2017-11-27T21:00:00Z",
+      "availableAt": "2017-11-28T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 634.05,
+      "close": 637.95
+    },
+    {
+      "date": "2017-11-28",
+      "openAt": "2017-11-28T14:30:00Z",
+      "closeAt": "2017-11-28T21:00:00Z",
+      "availableAt": "2017-11-29T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 641.23,
+      "close": 664.22
+    },
+    {
+      "date": "2017-11-29",
+      "openAt": "2017-11-29T14:30:00Z",
+      "closeAt": "2017-11-29T21:00:00Z",
+      "availableAt": "2017-11-30T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 666.24,
+      "close": 688.92
+    },
+    {
+      "date": "2017-11-30",
+      "openAt": "2017-11-30T14:30:00Z",
+      "closeAt": "2017-11-30T21:00:00Z",
+      "availableAt": "2017-12-01T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 688.92,
+      "close": 686.76
+    },
+    {
+      "date": "2017-12-01",
+      "openAt": "2017-12-01T14:30:00Z",
+      "closeAt": "2017-12-01T21:00:00Z",
+      "availableAt": "2017-12-02T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 690.0,
+      "close": 678.4
+    },
+    {
+      "date": "2017-12-04",
+      "openAt": "2017-12-04T14:30:00Z",
+      "closeAt": "2017-12-04T21:00:00Z",
+      "availableAt": "2017-12-05T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 687.37,
+      "close": 709.77
+    },
+    {
+      "date": "2017-12-05",
+      "openAt": "2017-12-05T14:30:00Z",
+      "closeAt": "2017-12-05T21:00:00Z",
+      "availableAt": "2017-12-06T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 747.0,
+      "close": 712.76
+    },
+    {
+      "date": "2017-12-06",
+      "openAt": "2017-12-06T14:30:00Z",
+      "closeAt": "2017-12-06T21:00:00Z",
+      "availableAt": "2017-12-07T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 705.63,
+      "close": 698.65
+    },
+    {
+      "date": "2017-12-07",
+      "openAt": "2017-12-07T14:30:00Z",
+      "closeAt": "2017-12-07T21:00:00Z",
+      "availableAt": "2017-12-08T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 701.46,
+      "close": 702.34
+    },
+    {
+      "date": "2017-12-08",
+      "openAt": "2017-12-08T14:30:00Z",
+      "closeAt": "2017-12-08T21:00:00Z",
+      "availableAt": "2017-12-09T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 702.79,
+      "close": 721.89
+    },
+    {
+      "date": "2017-12-11",
+      "openAt": "2017-12-11T14:30:00Z",
+      "closeAt": "2017-12-11T21:00:00Z",
+      "availableAt": "2017-12-12T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 719.59,
+      "close": 708.61
+    },
+    {
+      "date": "2017-12-12",
+      "openAt": "2017-12-12T14:30:00Z",
+      "closeAt": "2017-12-12T21:00:00Z",
+      "availableAt": "2017-12-13T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 710.86,
+      "close": 711.05
+    },
+    {
+      "date": "2017-12-13",
+      "openAt": "2017-12-13T14:30:00Z",
+      "closeAt": "2017-12-13T21:00:00Z",
+      "availableAt": "2017-12-14T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 715.35,
+      "close": 708.21
+    },
+    {
+      "date": "2017-12-14",
+      "openAt": "2017-12-14T14:30:00Z",
+      "closeAt": "2017-12-14T21:00:00Z",
+      "availableAt": "2017-12-15T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 705.64,
+      "close": 701.23
+    },
+    {
+      "date": "2017-12-15",
+      "openAt": "2017-12-15T14:30:00Z",
+      "closeAt": "2017-12-15T21:00:00Z",
+      "availableAt": "2017-12-16T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 706.73,
+      "close": 697.06
+    },
+    {
+      "date": "2017-12-18",
+      "openAt": "2017-12-18T14:30:00Z",
+      "closeAt": "2017-12-18T21:00:00Z",
+      "availableAt": "2017-12-19T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 705.67,
+      "close": 704.4
+    },
+    {
+      "date": "2017-12-19",
+      "openAt": "2017-12-19T14:30:00Z",
+      "closeAt": "2017-12-19T21:00:00Z",
+      "availableAt": "2017-12-20T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 703.44,
+      "close": 701.01
+    },
+    {
+      "date": "2017-12-20",
+      "openAt": "2017-12-20T14:30:00Z",
+      "closeAt": "2017-12-20T21:00:00Z",
+      "availableAt": "2017-12-21T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 706.035,
+      "close": 700.9
+    },
+    {
+      "date": "2017-12-21",
+      "openAt": "2017-12-21T14:30:00Z",
+      "closeAt": "2017-12-21T21:00:00Z",
+      "availableAt": "2017-12-22T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 703.73,
+      "close": 705.91
+    },
+    {
+      "date": "2017-12-22",
+      "openAt": "2017-12-22T14:30:00Z",
+      "closeAt": "2017-12-22T21:00:00Z",
+      "availableAt": "2017-12-23T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 706.97,
+      "close": 710.09
+    },
+    {
+      "date": "2017-12-26",
+      "openAt": "2017-12-26T14:30:00Z",
+      "closeAt": "2017-12-26T21:00:00Z",
+      "availableAt": "2017-12-27T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 710.95,
+      "close": 714.48
+    },
+    {
+      "date": "2017-12-27",
+      "openAt": "2017-12-27T14:30:00Z",
+      "closeAt": "2017-12-27T21:00:00Z",
+      "availableAt": "2017-12-28T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 714.19,
+      "close": 707.0
+    },
+    {
+      "date": "2017-12-28",
+      "openAt": "2017-12-28T14:30:00Z",
+      "closeAt": "2017-12-28T21:00:00Z",
+      "availableAt": "2017-12-29T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 709.5,
+      "close": 718.38
+    },
+    {
+      "date": "2017-12-29",
+      "openAt": "2017-12-29T14:30:00Z",
+      "closeAt": "2017-12-29T21:00:00Z",
+      "availableAt": "2017-12-30T02:15:00Z",
+      "sourceId": "wiki",
+      "open": 718.38,
+      "close": 711.37
+    }
+  ]
+}

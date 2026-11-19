@@ -1,0 +1,91 @@
+<!doctype html>
+<html data-identity="signature" lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer">
+    <title>券商连接 · Fund Edition</title>
+    <link rel="stylesheet" href="/broker.css">
+<link rel="stylesheet" href="/room-primitives.css">
+    <script type="module" src="/broker-view.mjs"></script>
+    <link rel="stylesheet" href="/brand.css">
+  <link rel="icon" href="/assets/signature-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/portfolio-wallet.css"><link rel="stylesheet" href="/connection-theme.css"><script type="module" src="/portfolio-header.mjs"></script></head>
+  <body data-broker-workflow>
+    <header class="broker-header">
+      <a href="/#/connections" aria-label="返回Fund Edition连接页"><span aria-hidden="true">←</span> <span data-broker-brand>Fund Edition</span></a>
+      <span><span data-broker-copy="6">私有操作控制台</span></span>
+    <a class="wallet-nav" data-portfolio-nav href="/portfolio?lang=zh-CN">我的投资组合</a><nav id="broker-languages" aria-label="中文 / English"></nav></header>
+    <main class="broker-main">
+      <header class="broker-intro">
+        <p class="broker-kicker">Alpaca Trading API</p>
+        <h1><span data-broker-copy="20">券商连接与操作</span></h1>
+        <p><span data-broker-copy="4">为独立配置的 Alpaca 账户预览并确认限价单。券商账户与工作室、基金广场的模拟账本各自记录。</span></p>
+      </header>
+      <p class="broker-message" id="broker-message" role="status"><span data-broker-copy="5">正在检查本机券商配置…</span></p>
+      <section class="broker-panel" id="broker-unavailable" hidden>
+        <h2><span data-broker-copy="7">需要本机配置</span></h2>
+        <p><span data-broker-copy="2">在交易电脑上直接打开Fund Edition，按配置文档设置独立的行情、Paper 或 Live 凭据、允许标的、单笔限额与本机操作口令，再重新启动。</span></p>
+        <p><span data-broker-copy="0">公开演示与普通模拟器可独立使用。支持的配置和测试步骤见 README。</span></p>
+      </section>
+      <div id="broker-workspace" hidden>
+        <section class="broker-panel" aria-labelledby="broker-account-heading">
+          <h2 id="broker-account-heading"><span data-broker-copy="11">执行账户</span></h2>
+          <div class="broker-grid broker-account">
+            <label><span data-broker-copy="10">Alpaca 环境</span>
+              <select id="broker-environment"></select>
+            </label>
+            <label><span data-broker-copy="8">本机操作口令</span>
+              <input type="password" id="broker-token" spellcheck="false" autocomplete="off" minlength="32" maxlength="128">
+            </label>
+          </div>
+          <p id="broker-environment-note" class="broker-note"></p>
+        </section>
+        <section class="broker-panel" aria-labelledby="broker-order-heading">
+          <h2 id="broker-order-heading"><span data-broker-copy="13">准备订单</span></h2>
+          <p><span data-broker-copy="1">仅使用允许的美股标的及整数股。订单为正常交易时段的当日有效限价单。</span></p>
+          <form id="broker-order-form">
+            <div class="broker-grid broker-fields">
+              <label><span data-broker-copy="22">标的</span>
+                <select name="symbol" id="broker-symbol" required></select>
+              </label>
+              <label><span data-broker-copy="25">方向</span>
+                <select name="side" required><option value="buy"><span data-broker-copy="27">买入</span></option><option value="sell"><span data-broker-copy="26">卖出</span></option></select>
+              </label>
+              <label><span data-broker-copy="23">股数</span>
+                <input type="number" name="quantity" min="1" max="10000" step="1" required value="1">
+              </label>
+              <label><span data-broker-copy="12">限价（美元）</span>
+                <input type="number" name="limitPrice" min="1" step="0.01" required placeholder="0.00">
+              </label>
+            </div>
+            <button class="broker-button" type="submit"><span data-broker-copy="17">预览订单</span></button>
+          </form>
+        </section>
+        <section class="broker-panel broker-review" id="broker-review" hidden aria-labelledby="broker-review-title">
+          <h2 id="broker-review-title"><span data-broker-copy="14">复核订单</span></h2>
+          <div id="broker-preview-details"></div>
+          <form id="broker-confirm-form">
+            <label><span data-broker-copy="24">输入 </span><code id="broker-confirm-phrase"></code><span data-broker-copy="19"> 以确认</span>
+              <input name="confirmation" type="text" autocomplete="off" spellcheck="false" required>
+            </label>
+            <div class="broker-actions">
+              <button class="broker-button" type="submit" id="broker-confirm-button" disabled><span data-broker-copy="21">确认</span></button>
+              <button class="broker-button broker-button-secondary" type="button" id="broker-dismiss"><span data-broker-copy="15">关闭预览</span></button>
+            </div>
+          </form>
+        </section>
+        <section class="broker-panel" aria-labelledby="broker-receipts-title">
+          <div class="broker-section-header">
+            <div>
+              <h2 id="broker-receipts-title"><span data-broker-copy="16">券商回执</span></h2>
+              <p><span data-broker-copy="3">刷新回执以核实 Alpaca 的最新状态。</span></p>
+            </div>
+            <button class="broker-button broker-button-secondary" id="broker-history" type="button"><span data-broker-copy="18">读取回执</span></button>
+          </div>
+          <div id="broker-receipts"><p><span data-broker-copy="9">尚未读取回执。</span></p></div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

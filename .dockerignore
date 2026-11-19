@@ -1,0 +1,12 @@
+**
+!Dockerfile
+!server.mjs
+!core/
+!core/**
+!web/
+!web/**
+**/.env
+**/.env.*
+**/*.sqlite*
+**/*.log
+**/__pycache__/**

@@ -1,0 +1,14 @@
+**
+!Dockerfile
+!start.mjs
+!site-worker.mjs
+!core/
+!core/*.mjs
+!hosting/
+!hosting/site/
+!hosting/site/direct-server.mjs
+!hosting/site/visitors.mjs
+!hosting/site/drizzle/
+!hosting/site/drizzle/*.sql
+!hosting/site/drizzle/meta/
+!hosting/site/drizzle/meta/_journal.json

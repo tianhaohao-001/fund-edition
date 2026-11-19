@@ -1,0 +1,11 @@
+.studio-recap { margin:0 0 25px; padding:15px 0 12px; border-bottom:1px solid #dcd7cf; color:#272524; }
+.sr-summary { display:flex; flex-wrap:wrap; gap:12px clamp(24px,7vw,112px); }
+.sr-summary>div { display:grid; gap:3px; }
+.studio-recap small,.sr-summary span { font-size:13px; line-height:1.4; font-weight:400; color:#645f5a; }
+.sr-summary strong { font-size:18px; font-variant-numeric:tabular-nums; }
+.sr-summary span { font-size:12px; }
+.studio-recap [data-studio-close] { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 14px; margin-top:12px; font-size:13px; }
+.studio-recap details { width:100%; }
+.studio-recap summary,.studio-recap .sr-question { cursor:pointer; color:#663d43; }
+.studio-recap details p { margin:4px 0 10px; max-width:70ch; font-size:13px; line-height:1.45; }
+.studio-recap .sr-question { background:none; border:0; padding:0; min-height:44px; text-align:left; text-decoration:underline; font:inherit; }

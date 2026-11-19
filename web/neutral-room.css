@@ -1,0 +1,14 @@
+/* The local development client and the public web entry share the same neutral palette. */
+:root,body,body[data-workspace],body[data-guided-workspace],body[data-workspace=lab]{
+ --ge-ink:#171717;--ge-sub:#575757;--ge-line:#d7d7d7;--fr-paper:#fff;--fr-surface:#fff;--fr-ink:#171717;--fr-secondary:#585858;--fr-line:#d8d8d8;--market-paper:#fff;--market-ink:#171717;--market-muted:#555;--market-rule:#d8d8d8;--market-accent:#262626;background:#fff;color:#171717;color-scheme:light;
+}
+
+body .site-header,.ge-rail{background:#ffffffed;backdrop-filter:blur(14px)}.seat-mark{display:inline-block;width:26px;height:26px;background:currentColor;mask:url('/assets/fund-tell-mark.svg') center/contain no-repeat}
+.guided-entry .ge-wordmark{font:600 20px/1.1 -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei UI",sans-serif}
+.guided-entry .ge-home{justify-items:start;align-content:center;text-align:left;min-height:calc(100svh - 83px);padding:48px min(9vw,150px);overflow:hidden;background:#fff}.ge-home .ge-portrait{position:absolute;z-index:-2;inset:0 0 0 auto;width:80%;height:100%;border-radius:0;box-shadow:none;background-position:right bottom;background-size:cover;background-color:#fff}
+.ge-home::before{z-index:-1;inset:0;background:linear-gradient(90deg,#fff 0%,#fff 20%,#ffffffef 29%,#ffffff90 39%,#ffffff08 56%,transparent 65%)}
+.ge-home .ge-intro,.ge-home .ge-id{color:#333}.ge-home .ge-intro{max-width:360px;text-wrap:pretty}.ge-home .ge-id{margin:0}.guided-entry .ge-home h1{font-size:clamp(40px,5.3vw,84px);white-space:pre-line;line-height:1.12;margin:22px 0 14px}.ge-home .ge-primary{color:#171717;background:linear-gradient(150deg,#fff,#ededed 55%,#ccc);border:1px solid #aaa;box-shadow:inset 0 2px #fff,inset 0 -2px 3px #aaa,0 4px 10px -5px #0004;padding:14px 22px}.ge-foot,.ge-settings{padding:4px 8px;border-radius:8px;color:#171717;background:#ffffffde}.ge-link:focus-visible,.ge-primary:focus-visible{outline-color:#171717}
+@media(max-width:700px){.guided-entry .ge-home{min-height:max(650px,calc(100svh - 62px));align-content:end;padding:0 27px 67px}.ge-home .ge-portrait{inset:0 0 auto;width:100%;height:52%;background-position:90% bottom}.ge-home::before{display:none}.guided-entry .ge-home h1{font-size:clamp(32px,9.5vw,47px);margin:12px 0 9px}.ge-home .ge-intro{font-size:15px;max-width:330px}.ge-home .ge-primary{margin-top:16px}.ge-foot,.ge-settings{bottom:9px}}
+@media(prefers-reduced-transparency:reduce){.site-header,.ge-rail,.ge-foot,.ge-settings{background:#fff;backdrop-filter:none}}
+@media(forced-colors:active){.seat-mark{forced-color-adjust:none;background:CanvasText}}
+

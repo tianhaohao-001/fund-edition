@@ -1,0 +1,80 @@
+import assert from 'node:assert/strict';
+import {once} from 'node:events';
+import {mkdir,writeFile} from 'node:fs/promises';
+import {createRequire} from 'node:module';
+import {resolve,join} from 'node:path';
+import {tmpdir} from 'node:os';
+import {createApp} from '../server.mjs';
+const require=createRequire(import.meta.url);
+const {chromium,webkit}=require(resolve(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
+const dir=resolve('release/review-web/maya-team-formation/expanded');
+await mkdir(dir,{recursive:true});
+process.env.PLAYWRIGHT_BROWSERS_PATH??=join(tmpdir(),'fund-edition-browser-qa');
+const {server}=await createApp({env:{FUNDROOM_DB_PATH:':memory:',FUNDROOM_BROKER_DB_PATH:':memory:',FUNDROOM_ENABLE_HARNESS:'false',FUNDROOM_ENABLE_LOCAL_VOICE:'false'}});
+server.listen(0,'127.0.0.1');await once(server,'listening');
+const origin='http://127.0.0.1:'+server.address().port;
+const mobile=await webkit.launch({headless:true,executablePath:join(process.env.PLAYWRIGHT_BROWSERS_PATH,'webkit-2336','Playwright.exe')});
+const desktop=await chromium.launch({channel:'msedge',headless:true});
+const report={at:new Date().toISOString(),mode:'Local isolated application and SQLite; deterministic roster editor, no model, order or payment requested.',cases:[]};
+try{
+ for(const [language,width] of [['zh-CN',390],['en-US',1440],['en-US',375],['zh-CN',1440]]){
+  const c=await(width<500?mobile:desktop).newContext({locale:language,viewport:{width,height:width<500?844:900},isMobile:width<500,hasTouch:width<500,serviceWorkers:'block'}),page=await c.newPage(),errors=[],receipts=[];
+  page.setDefaultTimeout(12000);page.on('pageerror',e=>errors.push(e.message));
+  page.on('response',r=>{if(r.request().method()==='POST'&&new URL(r.url()).pathname==='/api/action'){const b=r.request().postDataJSON();receipts.push({action:b.action,id:b.requestId,status:r.status()});}});
+  const state=()=>page.evaluate(async()=>(await(await fetch('/api/state')).json()));
+  const names=()=>page.locator('[data-formation-seat] h3').allTextContents();
+  const untilSeats=n=>page.waitForFunction(n=>document.querySelectorAll('[data-formation-seat]').length===n,n);
+  const add=async id=>{await page.locator('[name=draft-talent][value="'+id+'"]').check();await page.locator('[data-action=add-draft-seat]').click();};
+  await page.goto(origin+'/studio?lang='+language);await page.locator('[data-action=prepare-team]').click();await untilSeats(3);
+  const base=await names(),initial=await state();assert.ok(base.includes('Maya Chen'));
+  const beforeIdea=await page.locator('.formation-intro blockquote p').textContent();
+  const discoverability=await page.evaluate(()=>({screen:innerHeight,scroll:scrollY,selectors:[...document.querySelectorAll('.formation-recruit header, .formation-intro a, .formation-intro button, .formation-decision [data-action=confirm-team]')].map(el=>({text:el.textContent.trim(),top:Math.round(el.getBoundingClientRect().top)}))}));
+  await page.screenshot({path:join(dir,language+'-'+width+'-initial.png')});
+  const browse=page.locator('[data-action=open-draft-market]'),buttonBox=await browse.boundingBox();
+  assert.ok(buttonBox.y>=0 && buttonBox.y+buttonBox.height<(width<500?844:900),JSON.stringify(buttonBox));
+  await browse.click();await page.waitForFunction(()=>document.activeElement.id==='draft-recruiting');
+  assert.equal(await page.locator('[data-formation-seat=maya-chen] [data-action=remove-draft-seat]').count(),0);
+  await add('jules-bennett');await untilSeats(4);assert.ok((await names()).includes('Jules Bennett'));
+  await page.locator('[data-formation-seat=jules-bennett] [data-action=remove-draft-seat]').click();await untilSeats(3);assert.deepEqual(await names(),base);
+  const msg=language==='zh-CN'?'再加两个人，一个看宏观，一个看债券':'Add two specialists, one for macroeconomics and one for bonds.';
+  await page.locator('[data-action=change-team]').click();await page.locator('#guide-message').fill(msg);await page.locator('[data-form=studio-onboard] [type=submit]').click();await untilSeats(5);
+  const five=await names();assert.deepEqual(five.slice(0,3),base);assert.ok(five.includes('Nora Bell'));assert.ok(five.includes('Owen Reed'));
+  const edited=await state();assert.equal(edited.guide.messages.at(-1).source,'Roster editor');assert.equal(edited.funds.length,initial.funds.length);
+  assert.equal(await page.locator('.formation-intro blockquote p').textContent(),beforeIdea);
+  assert.equal(edited.guide.draft.mandate,initial.guide.draft.mandate);assert.deepEqual(edited.guide.draft.permissions,initial.guide.draft.permissions);
+  await add('eli-morgan');await untilSeats(6);const six=await names();assert.deepEqual(six.slice(0,5),five);
+  await page.reload();await untilSeats(6);assert.deepEqual(await names(),six);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth),0);
+  await page.locator('.formation-intro').scrollIntoViewIfNeeded();await page.screenshot({path:join(dir,language+'-'+width+'-proposal.png')});
+  await page.locator('.formation-recruit').scrollIntoViewIfNeeded();await page.screenshot({path:join(dir,language+'-'+width+'-recruit.png')});
+  await page.locator('[data-action=confirm-team]').click();await page.locator('[data-office-id]').waitFor();
+  const founded=await state();assert.equal(founded.funds.length,initial.funds.length+1);assert.deepEqual(founded.fund.team.map(s=>s.name),six);
+  assert.equal(founded.fund.mandate,initial.guide.draft.mandate);assert.deepEqual(founded.fund.permissions,initial.guide.draft.permissions);
+  const officeHash = '#/office?fund=' + encodeURIComponent(founded.fund.id);
+  assert.equal(new URL(page.url()).hash, officeHash);
+  assert.equal(await page.locator('[data-office-id]').getAttribute('data-office-id'), founded.fund.id);
+  await page.locator('[data-sw-state]').waitFor();
+  await page.reload();
+  await page.locator('#studio-chat[data-seat-role=manager]').waitFor();
+  const permanentRoom=page.locator('[data-office-room]');
+  await permanentRoom.waitFor();
+  assert.equal(await permanentRoom.getAttribute('data-fund-id'),founded.fund.id);
+  assert.equal(new URL(page.url()).hash, officeHash);
+  const staff=(await state()).fund.team;assert.deepEqual(staff.map(s=>s.name),six);
+  const room=permanentRoom;assert.equal(await room.locator('[data-action=select-member]').count(),six.length);
+  const desks={};for(const person of staff){desks[person.desk]=(desks[person.desk]||0)+1;assert.ok(await room.locator('[data-office-member="'+person.id+'"] [data-seat-handle]').isVisible(),person.name);}
+  assert.ok(Object.values(desks).some(n=>n>=3));assert.ok(await room.locator('.office-room-overflow').isVisible());
+  await room.scrollIntoViewIfNeeded();await page.screenshot({path:join(dir,language+'-'+width+'-office.png')});
+  const deskProof=[];
+  for(const member of staff){
+   await room.locator('[data-action=select-member][data-id="'+member.id+'"]').click();const detail=page.locator('#studio-chat');
+   await page.waitForFunction(id=>document.querySelector('#studio-chat')?.dataset.pairedSeat===id,member.id);
+   assert.equal(await detail.locator('.crew-subject h2').innerText(),member.name);assert.ok((await detail.locator('.crew-duty').innerText()).length>10);
+   if(member.role!=='manager')await detail.locator('[data-action=open-crew-chat]').click();assert.equal(await detail.locator('[data-form=chat] [name=memberId]').inputValue(),member.id);assert.ok(await detail.locator('[data-form=chat]').isVisible());
+   deskProof.push({name:member.name,desk:member.desk,duty:await detail.locator('.crew-duty').innerText(),chatTarget:member.id});
+  }
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth),0);assert.deepEqual(errors,[]);
+  assert.ok(receipts.every(r=>r.status===200));report.cases.push({language,width,initialIdea:beforeIdea,discoverability,original:base,five,six,persistedFundId:founded.fund.id,desks,deskProof,rosterAcknowledgment:edited.guide.messages.at(-1).text,receipts});
+  console.log(language,width,'passed');await c.close();
+ }
+ await writeFile(join(dir,'acceptance.json'),JSON.stringify(report,null,2));
+}finally{await Promise.all([mobile.close(),desktop.close()]);await new Promise(r=>server.close(r));}

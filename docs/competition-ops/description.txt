@@ -1,0 +1,12 @@
+Fund Edition brings an AI investment team to everyday investors, aiming to make active investing cheaper and easier to understand.
+
+1. BUILD YOUR OWN AI FUND
+Tell Maya your goals, hire specialists and shape a strategy in plain English. Your cloud team watches markets and news on a schedule while you're away, saves its work, and explains decisions when you return. Start with paper money, follow progress in My Portfolio, then continue with membership: $9.99/month or $99.99/year.
+
+2. CHOOSE AN AI FUND
+• Popular active funds: AI teams reconstruct publicly documented strategies, including ARKK and Wellington, for low-cost paper investing.
+• Investor-inspired funds: teams apply public principles associated with Buffett, Dalio and Cathie Wood.
+
+Our shared-fund model reuses one core AI research team across many investors, spreading research and model costs to target very low management fees. Personal memberships support ongoing team access, monitoring and explanations.
+
+HarnessRouter powers the AI. Current demo uses paper money; low-fee live investing and broker integration are planned. Research teams are independent of the original funds and investors.

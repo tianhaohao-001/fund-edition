@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN" data-identity="signature">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fund Edition · 付款测试</title><meta name="robots" content="noindex">
+  <link rel="icon" href="/assets/signature-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/membership.css"><link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/checkout-test.css">
+  <script type="module" src="/checkout-test-view.mjs"></script>
+</head>
+<body>
+<header><a class="brand" href="/">Fund Edition</a><div id="language"></div></header>
+<main class="test-main">
+  <a id="back" class="back" href="/membership.html">← 会员权益</a>
+  <p class="test-label" id="label">测试环境 · 零真实扣款</p><h1 id="heading">体验付款流程</h1>
+  <p class="lead" id="intro"></p>
+  <section class="plan-card" aria-label="Checkout">
+    <label for="test-mode" id="mode-label">测试方式</label><select id="test-mode"></select>
+    <p class="fine" id="mode-note"></p>
+    <label for="test-cadence" id="cadence-label">测试期限</label><select id="test-cadence"></select>
+    <p id="test-status" role="status" aria-live="polite"></p><p id="receipt"></p><p id="error" role="alert"></p>
+    <div class="actions"><button id="test-switch" class="commit" hidden></button><button id="test-create" class="commit" hidden></button><button id="test-approve" class="commit" hidden></button><button id="test-capture" class="commit" hidden></button><button id="test-cancel" class="secondary" hidden></button></div>
+  </section>
+</main></body></html>
