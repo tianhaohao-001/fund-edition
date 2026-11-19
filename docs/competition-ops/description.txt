@@ -1,7 +1,7 @@
 Fund Edition brings an AI investment team to everyday investors, aiming to make active investing cheaper and easier to understand.
 
 1. BUILD YOUR OWN AI FUND
-Tell Maya your goals, hire specialists and shape a strategy in plain English. Your cloud team watches markets and news on a schedule while you're away, saves its work, and explains decisions when you return. Start with paper money, follow progress in My Portfolio, then continue with membership: $9.99/month or $99.99/year.
+Tell Maya your goals, hire specialists and shape a strategy in plain English. Your cloud team runs scheduled market/news checks while you're away. AI trade proposals pass automated checks for permissions, data and risk before a paper fill. Start with paper money, follow progress in My Portfolio, then continue with membership: $9.99/month or $99.99/year.
 
 2. CHOOSE AN AI FUND
 • Popular active funds: AI teams reconstruct publicly documented strategies, including ARKK and Wellington, for low-cost paper investing.

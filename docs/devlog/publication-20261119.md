@@ -2,6 +2,8 @@
 
 ## Current complete technical edition and source repository
 
+The old main topic now carries an author reply explicitly marking it superseded and linking the current technical article. The project description also now includes scheduled market/news monitoring and AI proposals passing automated permission, data and risk checks before a simulated fill. The revised portal text fits its 1,200-character limit. Anonymous readback verified the notice and the current article link.
+
 - Canonical forum article is now [Fund Edition — how the data, AI teams and paper-trading engine work](https://community.harnessrouter.ai/events/the-big-hack-game/forum/t/e9871243d19443fda4c55a80583a7839), published as one main post with 13 numbered implementation sections, Build log category and The Big Hack Game label.
 - The earlier topic's follow-up reply was removed. The author interface exposes reply removal, while the earlier main topic has no edit or delete control and remains accessible. No deletion of that main topic is claimed.
 - The public journal uses the same 13-section technical narrative. Deployment `35ae2b5e-bd44-4f4f-ad7e-85c43df24741` succeeded. Anonymous readback verified sources, role routing, the decision contract, the watch worker and phone-width layout.
